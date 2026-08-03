@@ -1,5 +1,6 @@
 import { quoteOfTheDay } from "../../lib/quotes";
 import { bhajanGroups } from "../../lib/bhajans";
+import ShareQuoteButton from "../components/ShareQuoteButton";
 
 export const metadata = {
   title: "Bhakti | भक्ति",
@@ -18,10 +19,11 @@ export default function BhaktiPage() {
         <p className="mt-2 text-base">{quote.hindi}</p>
         <p className="mt-1 text-sm opacity-80 italic">{quote.english}</p>
         <p className="mt-2 text-xs opacity-70">{quote.source}</p>
+        <ShareQuoteButton quote={quote} />
       </div>
 
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">Kirtans &amp; Bhajans</p>
+        <p className="text-lg font-semibold">📿 Kirtans &amp; Bhajans</p>
         <p className="text-sm text-ink/60">भजन और कीर्तन</p>
         <p className="text-sm mt-2 text-ink/70">
           A few favorites to hum along to during rest, chores, or a quiet

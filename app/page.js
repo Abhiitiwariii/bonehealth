@@ -5,6 +5,8 @@ import Disclaimer from "./components/Disclaimer";
 import ProfileCard from "./components/ProfileCard";
 import ExerciseVideo from "./components/ExerciseVideo";
 import GameStats from "./components/GameStats";
+import ShareQuoteButton from "./components/ShareQuoteButton";
+import HealthNumbersSummary from "./components/HealthNumbersSummary";
 import { exercises, avoidList } from "../lib/exercises";
 import { quoteOfTheDay } from "../lib/quotes";
 import { todaysPlan } from "../lib/weeklyPlan";
@@ -56,11 +58,14 @@ export default function TodayPage() {
         <p className="mt-2 text-base">{quote.hindi}</p>
         <p className="mt-1 text-sm opacity-80 italic">{quote.english}</p>
         <p className="mt-2 text-xs opacity-70">{quote.source}</p>
+        <ShareQuoteButton quote={quote} />
       </div>
 
       <GameStats refreshKey={doneCount} />
 
       <ProfileCard />
+
+      <HealthNumbersSummary />
 
       <Disclaimer />
 
@@ -137,7 +142,7 @@ export default function TodayPage() {
 
       <div className="mt-6 bg-white rounded-xl border border-black/10 p-4">
         <p className="font-semibold mb-2">
-          Avoid these / इनसे बचें
+          🚫 Avoid these / इनसे बचें
         </p>
         <ul className="space-y-1 text-sm">
           {avoidList.map((a, i) => (

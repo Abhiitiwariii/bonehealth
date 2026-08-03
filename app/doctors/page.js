@@ -49,7 +49,7 @@ export default function DoctorsPage() {
   return (
     <div>
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">Find a Specialist Near You</p>
+        <p className="text-lg font-semibold">📍 Find a Specialist Near You</p>
         <p className="text-sm text-ink/60">अपने पास विशेषज्ञ खोजें</p>
         <p className="text-sm mt-2 text-ink/70">
           This app does not keep its own list of doctors. Instead it builds a
@@ -140,34 +140,36 @@ export default function DoctorsPage() {
 
       <div className="bg-clay/10 border border-clay/30 rounded-xl p-4 mb-6">
         <p className="text-lg font-semibold text-clay">
-          Understanding Knee Replacement
+          🦵 Understanding Knee Replacement
         </p>
         <p className="text-sm text-ink/60 mb-2">घुटना प्रतिस्थापन को समझना</p>
         <p className="text-sm">
           If your doctor has recommended knee replacement and you're
-          hesitant, that's a completely normal reaction. This section lays
-          out balanced facts so you can make this decision together with
-          your doctor, not to push you either way.
+          hesitant, that's a completely normal reaction. Tap any topic below
+          to read the full details when you're ready.
         </p>
         <p className="text-sm text-ink/60 mt-1">
           अगर आपके डॉक्टर ने घुटना प्रतिस्थापन की सलाह दी है और आप हिचकिचा
-          रहे हैं, तो यह बिल्कुल सामान्य प्रतिक्रिया है। यह भाग संतुलित
-          जानकारी देता है ताकि आप अपने डॉक्टर के साथ मिलकर निर्णय ले सकें,
-          किसी भी दिशा में दबाव डाले बिना।
+          रहे हैं, तो यह बिल्कुल सामान्य प्रतिक्रिया है। जब चाहें, नीचे किसी
+          भी विषय पर टैप करके पूरी जानकारी पढ़ें।
         </p>
       </div>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="font-semibold text-lg mb-2">What it is / यह क्या है</p>
-        <p className="text-sm">{whatIsIt.en}</p>
-        <p className="text-sm text-ink/50 mt-1">{whatIsIt.hi}</p>
-      </div>
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="font-semibold text-lg cursor-pointer">
+          ❓ What it is / यह क्या है
+        </summary>
+        <div className="mt-3">
+          <p className="text-sm">{whatIsIt.en}</p>
+          <p className="text-sm text-ink/50 mt-1">{whatIsIt.hi}</p>
+        </div>
+      </details>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="font-semibold text-lg mb-2">
-          When it's usually recommended / कब सलाह दी जाती है
-        </p>
-        <ul className="space-y-1 text-sm">
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="font-semibold text-lg cursor-pointer">
+          ⚠️ When it's usually recommended / कब सलाह दी जाती है
+        </summary>
+        <ul className="mt-3 space-y-1 text-sm">
           {whenRecommended_en.map((t, i) => (
             <li key={i}>
               <span className="text-sage">●</span> {t}
@@ -176,13 +178,13 @@ export default function DoctorsPage() {
             </li>
           ))}
         </ul>
-      </div>
+      </details>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="font-semibold text-lg mb-2">
-          Non-surgical options usually tried first / पहले आज़माए जाने वाले गैर-सर्जिकल विकल्प
-        </p>
-        <ul className="space-y-2 text-sm">
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="font-semibold text-lg cursor-pointer">
+          🩹 Non-surgical options usually tried first / पहले आज़माए जाने वाले गैर-सर्जिकल विकल्प
+        </summary>
+        <ul className="mt-3 space-y-2 text-sm">
           {alternatives.map((a) => (
             <li key={a.en}>
               <span className="font-medium">{a.en}</span>{" "}
@@ -192,36 +194,41 @@ export default function DoctorsPage() {
             </li>
           ))}
         </ul>
-      </div>
+      </details>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="font-semibold text-lg mb-2">Benefits / फायदे</p>
-        <ul className="space-y-1 text-sm mb-3">
-          {benefitsAndRisks.benefits_en.map((t, i) => (
-            <li key={i}>
-              <span className="text-sage">●</span> {t}
-              <br />
-              <span className="text-ink/50">{benefitsAndRisks.benefits_hi[i]}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="font-semibold text-lg mb-2">Risks / जोखिम</p>
-        <ul className="space-y-1 text-sm">
-          {benefitsAndRisks.risks_en.map((t, i) => (
-            <li key={i}>
-              <span className="text-clay">●</span> {t}
-              <br />
-              <span className="text-ink/50">{benefitsAndRisks.risks_hi[i]}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="font-semibold text-lg cursor-pointer">
+          ⚖️ Benefits and risks / फायदे और जोखिम
+        </summary>
+        <div className="mt-3">
+          <p className="font-semibold mb-2">Benefits / फायदे</p>
+          <ul className="space-y-1 text-sm mb-3">
+            {benefitsAndRisks.benefits_en.map((t, i) => (
+              <li key={i}>
+                <span className="text-sage">●</span> {t}
+                <br />
+                <span className="text-ink/50">{benefitsAndRisks.benefits_hi[i]}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="font-semibold mb-2">Risks / जोखिम</p>
+          <ul className="space-y-1 text-sm">
+            {benefitsAndRisks.risks_en.map((t, i) => (
+              <li key={i}>
+                <span className="text-clay">●</span> {t}
+                <br />
+                <span className="text-ink/50">{benefitsAndRisks.risks_hi[i]}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="font-semibold text-lg mb-2">
-          Recovery timeline / रिकवरी की समयरेखा
-        </p>
-        <ul className="space-y-2 text-sm">
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="font-semibold text-lg cursor-pointer">
+          📅 Recovery timeline / रिकवरी की समयरेखा
+        </summary>
+        <ul className="mt-3 space-y-2 text-sm">
           {recoveryTimeline.map((r) => (
             <li key={r.period_en} className="border-l-4 border-sage/40 pl-3">
               <p className="font-medium">
@@ -232,13 +239,13 @@ export default function DoctorsPage() {
             </li>
           ))}
         </ul>
-      </div>
+      </details>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="font-semibold text-lg mb-2">
-          Common fears, answered honestly / आम डर, ईमानदार जवाब
-        </p>
-        <ul className="space-y-3 text-sm">
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="font-semibold text-lg cursor-pointer">
+          💬 Common fears, answered honestly / आम डर, ईमानदार जवाब
+        </summary>
+        <ul className="mt-3 space-y-3 text-sm">
           {commonFears.map((f) => (
             <li key={f.fear_en}>
               <p className="font-medium italic">{f.fear_en}</p>
@@ -248,13 +255,13 @@ export default function DoctorsPage() {
             </li>
           ))}
         </ul>
-      </div>
+      </details>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="font-semibold text-lg mb-2">
-          Questions worth asking your doctor / डॉक्टर से पूछने लायक सवाल
-        </p>
-        <ol className="list-decimal list-inside space-y-1 text-sm">
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="font-semibold text-lg cursor-pointer">
+          🗣️ Questions worth asking your doctor / डॉक्टर से पूछने लायक सवाल
+        </summary>
+        <ol className="mt-3 list-decimal list-inside space-y-1 text-sm">
           {questionsToAsk_en.map((q, i) => (
             <li key={i}>
               {q}
@@ -263,7 +270,7 @@ export default function DoctorsPage() {
             </li>
           ))}
         </ol>
-      </div>
+      </details>
 
       <p className="text-center text-xs text-ink/40 mt-4">
         This is general education, not a diagnosis or a recommendation for

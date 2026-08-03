@@ -19,7 +19,12 @@ change in how you walk.**
 - **Profile** (`/profile`): enter your own height, weight, age, and knee
   report notes in your own words, and optionally attach photos or PDFs of
   reports. Everything is saved only on your device. The app never opens or
-  reads attached files; they are stored purely for your own reference.
+  reads attached files; they are stored purely for your own reference. Also
+  includes a spot to type in a few key numbers from your yearly report
+  (vitamin D, calcium, bone density T-score, hemoglobin), which then show
+  up on the Today dashboard with general reference ranges, and a "Tests
+  Worth Asking Your Doctor About" section with real, sourced explainer
+  videos.
 - **Diet** (`/diet`): a plain-language Hindi explainer of why calcium,
   vitamin D, protein, magnesium, and vitamin K all matter together,
   vegetarian Indian foods for each, a vrat/fasting-day friendly foods list
@@ -55,6 +60,9 @@ change in how you walk.**
   IndexedDB storage, only on that device. The app never opens, reads, or
   analyzes these files; they're for your own reference, the same as a
   folder on your phone.
+- Health numbers (vitamin D, calcium, bone density, hemoglobin) shown on
+  the dashboard are only ever what you typed in yourself. The app never
+  extracts numbers from an uploaded file.
 - Doctor search links point to Google Maps, Google Search, and Practo.
   Always confirm a doctor's qualifications, experience, and reviews
   yourself before booking an appointment.
@@ -112,4 +120,7 @@ Then open `http://localhost:3000` in a browser.
 - Report file storage: edit `lib/fileStore.js`.
 - Doctor search link builders: edit `lib/doctorSearch.js`.
 - Knee-replacement awareness content: edit `lib/kneeAwareness.js`.
+- Test suggestions and their videos: edit `lib/testSuggestions.js`.
+- Health number reference ranges: edit `lib/healthNumbers.js`.
 - Colors/text size: edit `tailwind.config.js` and `app/globals.css`.
+- Text size and contrast toggle: edit `app/components/AccessibilityControls.js`.

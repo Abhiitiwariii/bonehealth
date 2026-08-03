@@ -12,6 +12,8 @@ import {
   listReportFiles,
   deleteReportFile,
 } from "../../lib/fileStore";
+import TestSuggestions from "../components/TestSuggestions";
+import HealthNumbersForm from "../components/HealthNumbersForm";
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState(null);
@@ -68,7 +70,7 @@ export default function ProfilePage() {
   return (
     <div>
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">Your Profile</p>
+        <p className="text-lg font-semibold">👤 Your Profile</p>
         <p className="text-sm text-ink/60">आपकी प्रोफ़ाइल</p>
         <p className="text-sm mt-2 text-ink/70">
           Fill this in once. It personalizes your BMI note on the Today page.
@@ -176,9 +178,11 @@ export default function ProfilePage() {
         </button>
       </div>
 
+      <HealthNumbersForm />
+
       <div className="bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold mb-1">
-          Attach Report Files / रिपोर्ट फ़ाइलें जोड़ें
+          📎 Attach Report Files / रिपोर्ट फ़ाइलें जोड़ें
         </p>
         <p className="text-sm text-ink/60 mb-3">
           Photos or PDFs of your X-ray, scan, or doctor's note. Stored only
@@ -224,6 +228,10 @@ export default function ProfilePage() {
             ))}
           </ul>
         )}
+      </div>
+
+      <div className="mt-4">
+        <TestSuggestions profile={profile} />
       </div>
     </div>
   );

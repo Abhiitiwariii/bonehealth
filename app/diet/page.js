@@ -15,7 +15,7 @@ export default function DietPage() {
     <div>
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
         <p className="text-lg font-semibold">
-          Vegetarian Bone-Health Diet
+          🍽️ Vegetarian Bone-Health Diet
         </p>
         <p className="text-sm text-ink/60">शाकाहारी हड्डी-स्वास्थ्य आहार</p>
         <p className="text-sm mt-2 text-ink/70">
@@ -25,25 +25,25 @@ export default function DietPage() {
         </p>
       </div>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="text-lg font-semibold text-clay mb-2">
-          {nutritionBasicsHi.title}
-        </p>
-        <div className="space-y-2 text-sm leading-relaxed">
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="text-lg font-semibold text-clay cursor-pointer">
+          📖 {nutritionBasicsHi.title}
+        </summary>
+        <div className="mt-3 space-y-2 text-sm leading-relaxed">
           {nutritionBasicsHi.paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </div>
-      </div>
+      </details>
 
       <div className="space-y-4">
-        {nutrientGroups.map((group) => (
+        {nutrientGroups.map((group, i) => (
           <div
             key={group.title_en}
             className="bg-white rounded-xl border border-black/10 p-4"
           >
             <p className="text-lg font-semibold text-clay">
-              {group.title_en}
+              {["🦴", "☀️", "🥜", "🥬"][i % 4]} {group.title_en}
               <span className="text-ink/60 font-normal text-base">
                 {" "}
                 · {group.title_hi}
@@ -67,7 +67,7 @@ export default function DietPage() {
 
       <div className="mt-4 bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold text-clay">
-          {vratFriendlyFoods.title_en}
+          🙏 {vratFriendlyFoods.title_en}
           <span className="text-ink/60 font-normal text-base">
             {" "}
             · {vratFriendlyFoods.title_hi}
@@ -87,7 +87,7 @@ export default function DietPage() {
 
       <div className="mt-6 bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold mb-3">
-          A Sample Day / एक दिन का उदाहरण
+          🍲 A Sample Day / एक दिन का उदाहरण
         </p>
         <div className="space-y-3">
           {sampleDay.map((m) => (
@@ -104,7 +104,7 @@ export default function DietPage() {
 
       <div className="mt-6 bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold mb-1">
-          Supplements / सप्लीमेंट
+          💊 Supplements / सप्लीमेंट
         </p>
         <p className="text-sm text-ink/60 mb-3">
           Ask your doctor before starting any of these. Links open in a new

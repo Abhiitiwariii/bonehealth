@@ -1,0 +1,21 @@
+"use client";
+
+// A WhatsApp share link for the daily quote. Uses wa.me, which opens the
+// WhatsApp app on phones and WhatsApp Web on desktop, with the quote text
+// already filled in. No account or backend involved.
+
+export default function ShareQuoteButton({ quote }) {
+  const text = `${quote.sanskrit}\n${quote.hindi}\n\n${quote.english}\n\n${quote.source}`;
+  const shareUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+
+  return (
+    <a
+      href={shareUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-3 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white text-sm font-medium rounded-lg px-3 py-2"
+    >
+      📤 Share on WhatsApp / व्हाट्सएप पर भेजें
+    </a>
+  );
+}

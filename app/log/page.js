@@ -86,7 +86,7 @@ export default function LogPage() {
   return (
     <div>
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">Today's Check-In</p>
+        <p className="text-lg font-semibold">📋 Today's Check-In</p>
         <p className="text-sm text-ink/60">आज की जानकारी दर्ज करें</p>
       </div>
 
@@ -148,11 +148,11 @@ export default function LogPage() {
         </button>
       </div>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
-        <p className="text-lg font-semibold mb-1">
-          Comfort Tips / आराम के उपाय
-        </p>
-        <p className="text-sm text-ink/60 mb-3">
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+        <summary className="text-lg font-semibold cursor-pointer">
+          🩹 Comfort Tips / आराम के उपाय
+        </summary>
+        <p className="text-sm text-ink/60 mt-2 mb-3">
           Non-medicine ways to ease pain. Never guess on medicines. Always
           follow your doctor's instructions for those.
         </p>
@@ -171,7 +171,7 @@ export default function LogPage() {
 
         <div className="mt-4 bg-clay/10 border border-clay/30 rounded-lg p-3">
           <p className="font-semibold text-clay mb-2">
-            Call your doctor if / डॉक्टर को कॉल करें अगर
+            📞 Call your doctor if / डॉक्टर को कॉल करें अगर
           </p>
           <ul className="space-y-1 text-sm">
             {whenToCallDoctor.map((w, i) => (
@@ -182,11 +182,11 @@ export default function LogPage() {
             ))}
           </ul>
         </div>
-      </div>
+      </details>
 
       <div className="bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold mb-3">
-          History / इतिहास
+          📊 History / इतिहास
         </p>
         {history.length === 0 ? (
           <p className="text-sm text-ink/50">

@@ -1,5 +1,6 @@
 import "./globals.css";
 import Nav from "./components/Nav";
+import AccessibilityControls from "./components/AccessibilityControls";
 
 export const metadata = {
   title: "Bone Health · Arogya Saathi | हड्डी स्वास्थ्य · आरोग्य साथी",
@@ -33,6 +34,8 @@ export default function RootLayout({ children }) {
           <br />
           सदैव अपने डॉक्टर या फिजियोथेरेपिस्ट की सलाह का पालन करें।
         </footer>
+
+        <AccessibilityControls />
       </body>
     </html>
   );
