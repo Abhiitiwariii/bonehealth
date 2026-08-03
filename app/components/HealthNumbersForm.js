@@ -28,20 +28,16 @@ export default function HealthNumbersForm() {
   return (
     <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
       <p className="text-lg font-semibold mb-1">
-        🔢 Your Yearly Report Numbers (optional)
+        🔢 <span className="lang-en">Your Report Numbers (optional)</span>
+        <span className="lang-hi">आपकी रिपोर्ट के आंकड़े (वैकल्पिक)</span>
       </p>
-      <p className="text-sm text-ink/60 mb-3">
-        आपकी वार्षिक रिपोर्ट के आंकड़े (वैकल्पिक)
+      <p className="text-sm text-ink/70 mb-4 lang-en">
+        Type in a few numbers from your latest report. The app never reads
+        uploaded files, so this is the only way they show on your dashboard.
       </p>
-      <p className="text-sm text-ink/70 mb-4">
-        Type in a few key numbers from your latest report yourself. The app
-        never opens or reads uploaded files, so this is the only way these
-        numbers can show up on your dashboard.
-        <br />
-        <span className="text-ink/50">
-          अपनी नवीनतम रिपोर्ट से कुछ मुख्य आंकड़े खुद टाइप करें। ऐप अपलोड की
-          गई फ़ाइलें कभी नहीं खोलता, इसलिए इन आंकड़ों को दिखाने का यही तरीका है।
-        </span>
+      <p className="text-sm text-ink/70 mb-4 lang-hi">
+        अपनी रिपोर्ट से कुछ आंकड़े टाइप करें। ऐप अपलोड की गई फ़ाइलें कभी नहीं
+        पढ़ता, इसलिए यही तरीका है इन्हें दिखाने का।
       </p>
 
       <div className="grid grid-cols-2 gap-3">
@@ -92,7 +88,8 @@ export default function HealthNumbersForm() {
       </div>
 
       <label className="block mt-3">
-        <span className="text-sm font-semibold">Report date (optional)</span>
+        <span className="text-sm font-semibold lang-en">Report date (optional)</span>
+        <span className="text-sm font-semibold lang-hi">रिपोर्ट की तारीख (वैकल्पिक)</span>
         <input
           type="date"
           value={values.testedOn}
@@ -105,13 +102,17 @@ export default function HealthNumbersForm() {
         onClick={handleSave}
         className="mt-4 w-full bg-clay text-white font-semibold py-3 rounded-lg text-lg"
       >
-        {saved ? "Saved ✓ / सेव हो गया" : "Save Numbers / आंकड़े सेव करें"}
+        <span className="lang-en">{saved ? "Saved ✓" : "Save Numbers"}</span>
+        <span className="lang-hi">{saved ? "सेव हो गया ✓" : "आंकड़े सेव करें"}</span>
       </button>
 
-      <p className="text-xs text-ink/40 mt-3">
-        Leave any field blank if you don't have that number. These are typed
-        by you, not read from any file, and reference ranges shown against
-        them are general lab ranges, not your specific lab's exact cutoffs.
+      <p className="text-xs text-ink/40 mt-3 lang-en">
+        Leave blank if you don't have a number. Ranges shown are general,
+        not your specific lab's cutoffs.
+      </p>
+      <p className="text-xs text-ink/40 mt-3 lang-hi">
+        अगर आंकड़ा नहीं है तो खाली छोड़ें। दिखाए गए दायरे सामान्य हैं, आपकी
+        लैब की सटीक सीमा नहीं।
       </p>
     </div>
   );

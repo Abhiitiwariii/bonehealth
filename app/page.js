@@ -52,11 +52,12 @@ export default function TodayPage() {
     <div>
       <div className="bg-gradient-to-br from-clay to-clay/80 text-white rounded-xl p-4 mb-6 shadow-sm">
         <p className="text-xs uppercase tracking-wide opacity-80 mb-1">
-          🪷 Today's Krishna Quote / आज का श्री कृष्ण वचन
+          🪷 <span className="lang-en">Today's Krishna Quote</span>
+          <span className="lang-hi">आज का श्री कृष्ण वचन</span>
         </p>
-        <p className="text-lg leading-relaxed">{quote.sanskrit}</p>
-        <p className="mt-2 text-base">{quote.hindi}</p>
-        <p className="mt-1 text-sm opacity-80 italic">{quote.english}</p>
+        <p className="text-lg leading-relaxed lang-hi">{quote.sanskrit}</p>
+        <p className="mt-2 text-base lang-hi">{quote.hindi}</p>
+        <p className="mt-1 text-sm opacity-90 italic lang-en">{quote.english}</p>
         <p className="mt-2 text-xs opacity-70">{quote.source}</p>
         <ShareQuoteButton quote={quote} />
       </div>
@@ -72,15 +73,22 @@ export default function TodayPage() {
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm flex items-center justify-between">
         <div>
           <p className="text-lg font-semibold">
-            {plan.theme_en} <span className="text-ink/50 font-normal">· {plan.theme_hi}</span>
+            <span className="lang-en">{plan.theme_en}</span>
+            <span className="lang-hi">{plan.theme_hi}</span>
           </p>
-          <p className="text-sm text-ink/60">Today's routine · आज की दिनचर्या</p>
+          <p className="text-sm text-ink/60">
+            <span className="lang-en">Today's routine</span>
+            <span className="lang-hi">आज की दिनचर्या</span>
+          </p>
         </div>
         <div className="text-right">
           <p className="text-2xl font-bold text-clay">
             {doneCount}/{todaysExercises.length}
           </p>
-          <p className="text-xs text-ink/60">done / पूर्ण</p>
+          <p className="text-xs text-ink/60">
+            <span className="lang-en">done</span>
+            <span className="lang-hi">पूर्ण</span>
+          </p>
         </div>
       </div>
 
@@ -103,27 +111,26 @@ export default function TodayPage() {
               />
               <div className="flex-1">
                 <p className="text-lg font-semibold">
-                  {ex.name_en}
-                  <span className="text-ink/60 font-normal">
-                    {" "}
-                    · {ex.name_hi}
-                  </span>
+                  <span className="lang-en">{ex.name_en}</span>
+                  <span className="lang-hi">{ex.name_hi}</span>
                 </p>
                 <p className="text-sm text-clay font-medium mt-0.5">
-                  {ex.reps} <span className="text-ink/50">· {ex.reps_hi}</span>
+                  <span className="lang-en">{ex.reps}</span>
+                  <span className="lang-hi">{ex.reps_hi}</span>
                 </p>
                 <details className="mt-2 text-sm">
                   <summary className="cursor-pointer text-sage font-medium">
-                    How to do it / कैसे करें
+                    <span className="lang-en">How to do it</span>
+                    <span className="lang-hi">कैसे करें</span>
                   </summary>
-                  <p className="mt-1 italic text-ink/70">{ex.why_en}</p>
-                  <p className="italic text-ink/50">{ex.why_hi}</p>
-                  <ol className="list-decimal list-inside mt-2 space-y-1">
+                  <p className="mt-1 italic text-ink/70 lang-en">{ex.why_en}</p>
+                  <p className="italic text-ink/50 lang-hi">{ex.why_hi}</p>
+                  <ol className="list-decimal list-inside mt-2 space-y-1 lang-en">
                     {ex.steps_en.map((s, i) => (
                       <li key={i}>{s}</li>
                     ))}
                   </ol>
-                  <ol className="list-decimal list-inside mt-2 space-y-1 text-ink/60">
+                  <ol className="list-decimal list-inside mt-2 space-y-1 text-ink/60 lang-hi">
                     {ex.steps_hi.map((s, i) => (
                       <li key={i}>{s}</li>
                     ))}
@@ -142,22 +149,25 @@ export default function TodayPage() {
 
       <div className="mt-6 bg-white rounded-xl border border-black/10 p-4">
         <p className="font-semibold mb-2">
-          🚫 Avoid these / इनसे बचें
+          🚫 <span className="lang-en">Avoid these</span>
+          <span className="lang-hi">इनसे बचें</span>
         </p>
         <ul className="space-y-1 text-sm">
           {avoidList.map((a, i) => (
             <li key={i}>
-              <span className="text-clay">✕</span> {a.en}
-              <span className="text-ink/50"> · {a.hi}</span>
+              <span className="text-clay">✕</span>{" "}
+              <span className="lang-en">{a.en}</span>
+              <span className="lang-hi">{a.hi}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      <p className="text-center text-sm text-ink/50 mt-6">
+      <p className="text-center text-sm text-ink/50 mt-6 lang-en">
         Go to <span className="font-semibold">My Progress</span> to log
-        today's pain level and save this to history.
-        <br />
+        today's pain level.
+      </p>
+      <p className="text-center text-sm text-ink/50 mt-6 lang-hi">
         आज का दर्द स्तर दर्ज करने के लिए "प्रगति" पर जाएं।
       </p>
     </div>

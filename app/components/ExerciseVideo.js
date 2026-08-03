@@ -17,7 +17,8 @@ export default function ExerciseVideo({ videoId, videoSource, videoSearch }) {
         rel="noopener noreferrer"
         className="mt-2 inline-flex items-center gap-1 text-sm text-sage underline decoration-sage/40 underline-offset-2"
       >
-        ▶ Search a demo video / डेमो वीडियो खोजें
+        ▶ <span className="lang-en">Search a demo video</span>
+        <span className="lang-hi">डेमो वीडियो खोजें</span>
       </a>
     );
   }
@@ -29,7 +30,8 @@ export default function ExerciseVideo({ videoId, videoSource, videoSearch }) {
         className="mt-2 flex items-center gap-2 bg-clay text-white text-sm font-medium rounded-lg px-3 py-2"
       >
         <span className="text-lg leading-none">▶</span>
-        Watch how to do it / देखें कैसे करें
+        <span className="lang-en">Watch how to do it</span>
+        <span className="lang-hi">देखें कैसे करें</span>
       </button>
     );
   }

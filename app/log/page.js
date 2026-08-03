@@ -69,37 +69,31 @@ export default function LogPage() {
     setTimeout(() => setSaved(false), 2000);
   }
 
-  const painLabels = [
-    "No pain",
-    "Very mild",
-    "Mild",
-    "Noticeable",
-    "Uncomfortable",
-    "Moderate",
-    "Quite sore",
-    "Very sore",
-    "Severe",
-    "Very severe",
-    "Worst possible",
+  const painLabels_en = [
+    "No pain", "Very mild", "Mild", "Noticeable", "Uncomfortable",
+    "Moderate", "Quite sore", "Very sore", "Severe", "Very severe", "Worst possible",
   ];
+  const painLabels_hi = [
+    "दर्द नहीं", "बहुत हल्का", "हल्का", "महसूस होता", "असहज",
+    "मध्यम", "काफ़ी दर्द", "बहुत दर्द", "गंभीर", "बहुत गंभीर", "सबसे ज़्यादा",
+  ];
+  const painFaces = ["😄", "🙂", "🙂", "😐", "😐", "😕", "😕", "😣", "😣", "😖", "😫"];
 
   return (
     <div>
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">📋 Today's Check-In</p>
-        <p className="text-sm text-ink/60">आज की जानकारी दर्ज करें</p>
+        <p className="text-lg font-semibold">
+          📋 <span className="lang-en">Today's Check-In</span>
+          <span className="lang-hi">आज की जानकारी दर्ज करें</span>
+        </p>
       </div>
 
       <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
         <label className="block mb-3">
-          <span className="font-semibold">
-            Knee / joint pain today (0 = none, 10 = worst)
-          </span>
-          <br />
-          <span className="text-sm text-ink/50">
-            आज घुटने/जोड़ में दर्द (0 = बिल्कुल नहीं, 10 = सबसे ज़्यादा)
-          </span>
+          <span className="font-semibold lang-en">Knee / joint pain today</span>
+          <span className="font-semibold lang-hi">आज घुटने/जोड़ में दर्द</span>
           <div className="flex items-center gap-3 mt-2">
+            <span className="text-4xl">{painFaces[pain]}</span>
             <input
               type="range"
               min="0"
@@ -112,9 +106,8 @@ export default function LogPage() {
               {pain}
             </span>
           </div>
-          <p className="text-sm text-ink/60 mt-1">
-            {painLabels[pain]}
-          </p>
+          <p className="text-sm text-ink/60 mt-1 lang-en">{painLabels_en[pain]}</p>
+          <p className="text-sm text-ink/60 mt-1 lang-hi">{painLabels_hi[pain]}</p>
         </label>
 
         <label className="flex items-center gap-3 mb-3 cursor-pointer">
@@ -125,18 +118,20 @@ export default function LogPage() {
             className="w-5 h-5 accent-clay"
           />
           <span>
-            Went for a walk today <span className="text-ink/50">· आज सैर की</span>
+            🚶 <span className="lang-en">Walked today</span>
+            <span className="lang-hi">आज सैर की</span>
           </span>
         </label>
 
         <label className="block">
-          <span className="font-semibold">Notes / टिप्पणी</span>
+          <span className="font-semibold lang-en">Notes</span>
+          <span className="font-semibold lang-hi">टिप्पणी</span>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={3}
             className="w-full mt-1 border border-black/15 rounded-lg p-2 text-base"
-            placeholder="How did you feel today? / आज कैसा महसूस हुआ?"
+            placeholder="How did you feel today?"
           />
         </label>
 
@@ -144,40 +139,47 @@ export default function LogPage() {
           onClick={handleSave}
           className="mt-4 w-full bg-clay text-white font-semibold py-3 rounded-lg text-lg"
         >
-          {saved ? "Saved ✓ / सेव हो गया" : "Save Today / आज का डेटा सेव करें"}
+          <span className="lang-en">{saved ? "Saved ✓" : "Save Today"}</span>
+          <span className="lang-hi">{saved ? "सेव हो गया ✓" : "आज का डेटा सेव करें"}</span>
         </button>
       </div>
 
       <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
         <summary className="text-lg font-semibold cursor-pointer">
-          🩹 Comfort Tips / आराम के उपाय
+          🩹 <span className="lang-en">Comfort Tips</span>
+          <span className="lang-hi">आराम के उपाय</span>
         </summary>
-        <p className="text-sm text-ink/60 mt-2 mb-3">
-          Non-medicine ways to ease pain. Never guess on medicines. Always
-          follow your doctor's instructions for those.
+        <p className="text-sm text-ink/60 mt-2 mb-3 lang-en">
+          Non-medicine ways to ease pain. Follow your doctor's instructions
+          for medicines.
+        </p>
+        <p className="text-sm text-ink/60 mt-2 mb-3 lang-hi">
+          दर्द कम करने के गैर-दवा उपाय। दवाओं के लिए डॉक्टर की सलाह मानें।
         </p>
         <ul className="space-y-3">
           {painTips.map((tip) => (
             <li key={tip.title_en} className="border-l-4 border-sage/40 pl-3">
               <p className="font-semibold">
-                {tip.title_en}{" "}
-                <span className="text-ink/50 font-normal">· {tip.title_hi}</span>
+                <span className="lang-en">{tip.title_en}</span>
+                <span className="lang-hi">{tip.title_hi}</span>
               </p>
-              <p className="text-sm mt-0.5">{tip.text_en}</p>
-              <p className="text-sm text-ink/50">{tip.text_hi}</p>
+              <p className="text-sm mt-0.5 lang-en">{tip.text_en}</p>
+              <p className="text-sm text-ink/50 lang-hi">{tip.text_hi}</p>
             </li>
           ))}
         </ul>
 
         <div className="mt-4 bg-clay/10 border border-clay/30 rounded-lg p-3">
           <p className="font-semibold text-clay mb-2">
-            📞 Call your doctor if / डॉक्टर को कॉल करें अगर
+            📞 <span className="lang-en">Call your doctor if</span>
+            <span className="lang-hi">डॉक्टर को कॉल करें अगर</span>
           </p>
           <ul className="space-y-1 text-sm">
             {whenToCallDoctor.map((w, i) => (
               <li key={i}>
-                <span className="text-clay">●</span> {w.en}
-                <span className="text-ink/50"> · {w.hi}</span>
+                <span className="text-clay">●</span>{" "}
+                <span className="lang-en">{w.en}</span>
+                <span className="lang-hi">{w.hi}</span>
               </li>
             ))}
           </ul>
@@ -186,14 +188,18 @@ export default function LogPage() {
 
       <div className="bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold mb-3">
-          📊 History / इतिहास
+          📊 <span className="lang-en">History</span>
+          <span className="lang-hi">इतिहास</span>
         </p>
         {history.length === 0 ? (
-          <p className="text-sm text-ink/50">
-            No entries yet. Save today's check-in to start tracking.
-            <br />
-            अभी कोई प्रविष्टि नहीं। ट्रैकिंग शुरू करने के लिए आज का डेटा सेव करें।
-          </p>
+          <>
+            <p className="text-sm text-ink/50 lang-en">
+              No entries yet. Save today's check-in to start.
+            </p>
+            <p className="text-sm text-ink/50 lang-hi">
+              अभी कोई प्रविष्टि नहीं। आज का डेटा सेव करके शुरू करें।
+            </p>
+          </>
         ) : (
           <ul className="space-y-3">
             {history.map((h) => (
@@ -204,7 +210,7 @@ export default function LogPage() {
                 <div className="flex justify-between items-center">
                   <span className="font-semibold">{h.date}</span>
                   <span className="text-clay font-semibold">
-                    Pain {h.pain}/10
+                    {painFaces[h.pain]} {h.pain}/10
                   </span>
                 </div>
                 <div className="w-full bg-black/5 rounded-full h-2 mt-2">
@@ -214,8 +220,12 @@ export default function LogPage() {
                   />
                 </div>
                 <p className="mt-2 text-ink/70">
-                  Exercises: {h.exercisesDone}/{h.exercisesTotal} &nbsp;·&nbsp;
-                  Walked: {h.walked ? "Yes" : "No"}
+                  <span className="lang-en">
+                    Exercises: {h.exercisesDone}/{h.exercisesTotal} · Walked: {h.walked ? "Yes" : "No"}
+                  </span>
+                  <span className="lang-hi">
+                    व्यायाम: {h.exercisesDone}/{h.exercisesTotal} · सैर: {h.walked ? "हां" : "नहीं"}
+                  </span>
                 </p>
                 {h.notes && <p className="mt-1 italic text-ink/60">"{h.notes}"</p>}
               </li>
@@ -224,10 +234,11 @@ export default function LogPage() {
         )}
       </div>
 
-      <p className="text-center text-xs text-ink/40 mt-4">
-        This history is saved only on this device/browser, not sent anywhere.
-        <br />
-        यह इतिहास केवल इस डिवाइस पर सेव है, कहीं भेजा नहीं जाता।
+      <p className="text-center text-xs text-ink/40 mt-4 lang-en">
+        Saved only on this device, not sent anywhere.
+      </p>
+      <p className="text-center text-xs text-ink/40 mt-4 lang-hi">
+        केवल इसी डिवाइस पर सेव, कहीं भेजा नहीं जाता।
       </p>
     </div>
   );

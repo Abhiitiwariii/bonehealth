@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cream: "#FBF7F0",
+        cream: "#FDF6EC",
+        sand: "#F6E9D8",
         clay: "#B5654A",
         sage: "#6E8B6E",
         ink: "#2E2A26",

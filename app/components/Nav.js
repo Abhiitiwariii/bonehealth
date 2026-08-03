@@ -31,8 +31,8 @@ export default function Nav() {
                   : "border-transparent text-ink/60"
               }`}
             >
-              {link.label}
-              <span className="block text-xs opacity-70">{link.hindi}</span>
+              <span className="lang-en">{link.label}</span>
+              <span className="lang-hi">{link.hindi}</span>
             </Link>
           );
         })}

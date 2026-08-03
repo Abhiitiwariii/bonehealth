@@ -57,7 +57,8 @@ export default function AccessibilityControls() {
       {open && (
         <div className="mb-2 bg-white border border-black/10 rounded-xl shadow-lg p-3 w-56">
           <p className="text-sm font-semibold mb-2">
-            Text Size / अक्षर आकार
+            <span className="lang-en">Text Size</span>
+            <span className="lang-hi">अक्षर आकार</span>
           </p>
           <div className="flex gap-2 mb-3">
             {sizes.map((s) => (
@@ -82,9 +83,8 @@ export default function AccessibilityControls() {
                 : "bg-white text-ink border-black/15"
             }`}
           >
-            {highContrast ? "High Contrast: On" : "High Contrast: Off"}
-            <br />
-            <span className="text-xs font-normal">अधिक कंट्रास्ट</span>
+            <span className="lang-en">{highContrast ? "High Contrast: On" : "High Contrast: Off"}</span>
+            <span className="lang-hi">{highContrast ? "अधिक कंट्रास्ट: चालू" : "अधिक कंट्रास्ट: बंद"}</span>
           </button>
         </div>
       )}

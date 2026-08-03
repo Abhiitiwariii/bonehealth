@@ -19,27 +19,34 @@ export default function GameStats({ refreshKey }) {
       <div className="flex items-center justify-between">
         <div>
           <p className="text-lg font-semibold">
-            Streak · लगातार दिन
+            <span className="lang-en">Streak</span>
+            <span className="lang-hi">लगातार दिन</span>
           </p>
           <p className="text-2xl mt-1">
             {flameCount > 0 ? "🪔".repeat(flameCount) : "🪔"}
           </p>
           <p className="text-sm text-ink/60 mt-1">
-            {stats.streak} {stats.streak === 1 ? "day" : "days"} in a row
+            <span className="lang-en">{stats.streak} {stats.streak === 1 ? "day" : "days"}</span>
+            <span className="lang-hi">{stats.streak} दिन</span>
           </p>
         </div>
         <div className="text-right">
-          <p className="text-lg font-semibold">Points · अंक</p>
+          <p className="text-lg font-semibold">
+            <span className="lang-en">Points</span>
+            <span className="lang-hi">अंक</span>
+          </p>
           <p className="text-2xl font-bold text-clay mt-1">{stats.points}</p>
         </div>
       </div>
 
-      <p className="text-sm font-semibold mt-4 mb-2">Badges · बैज</p>
+      <p className="text-sm font-semibold mt-4 mb-2">
+        <span className="lang-en">Badges</span>
+        <span className="lang-hi">बैज</span>
+      </p>
       <div className="flex flex-wrap gap-2">
         {stats.badges.map((b) => (
           <div
             key={b.id}
-            title={`${b.name_en} · ${b.name_hi}`}
             className={`flex items-center gap-1 rounded-full px-3 py-1 text-sm border ${
               b.earned
                 ? "bg-clay/10 border-clay/30 text-clay"
@@ -47,7 +54,8 @@ export default function GameStats({ refreshKey }) {
             }`}
           >
             <span>{b.emoji}</span>
-            <span>{b.name_en}</span>
+            <span className="lang-en">{b.name_en}</span>
+            <span className="lang-hi">{b.name_hi}</span>
           </div>
         ))}
       </div>

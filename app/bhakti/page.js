@@ -13,26 +13,27 @@ export default function BhaktiPage() {
     <div>
       <div className="bg-gradient-to-br from-clay to-clay/80 text-white rounded-xl p-4 mb-6 shadow-sm">
         <p className="text-xs uppercase tracking-wide opacity-80 mb-1">
-          🪷 Today's Krishna Quote / आज का श्री कृष्ण वचन
+          🪷 <span className="lang-en">Today's Krishna Quote</span>
+          <span className="lang-hi">आज का श्री कृष्ण वचन</span>
         </p>
-        <p className="text-lg leading-relaxed">{quote.sanskrit}</p>
-        <p className="mt-2 text-base">{quote.hindi}</p>
-        <p className="mt-1 text-sm opacity-80 italic">{quote.english}</p>
+        <p className="text-lg leading-relaxed lang-hi">{quote.sanskrit}</p>
+        <p className="mt-2 text-base lang-hi">{quote.hindi}</p>
+        <p className="mt-1 text-sm opacity-90 italic lang-en">{quote.english}</p>
         <p className="mt-2 text-xs opacity-70">{quote.source}</p>
         <ShareQuoteButton quote={quote} />
       </div>
 
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">📿 Kirtans &amp; Bhajans</p>
-        <p className="text-sm text-ink/60">भजन और कीर्तन</p>
-        <p className="text-sm mt-2 text-ink/70">
-          A few favorites to hum along to during rest, chores, or a quiet
-          moment. Tap a song to search for it on YouTube and pick whichever
-          singer's voice you like best.
+        <p className="text-lg font-semibold">
+          📿 <span className="lang-en">Kirtans &amp; Bhajans</span>
+          <span className="lang-hi">भजन और कीर्तन</span>
         </p>
-        <p className="text-sm text-ink/50 mt-1">
-          आराम के समय या शांत पल में गुनगुनाने के लिए कुछ पसंदीदा भजन। किसी
-          भी गाने पर टैप करें और अपनी पसंद के गायक को चुनें।
+        <p className="text-sm mt-2 text-ink/70 lang-en">
+          Favorites to hum during rest or a quiet moment. Tap a song for a
+          YouTube search.
+        </p>
+        <p className="text-sm mt-2 text-ink/70 lang-hi">
+          आराम या शांत पल में गुनगुनाने के लिए भजन। किसी गाने पर टैप करें।
         </p>
       </div>
 
@@ -43,11 +44,8 @@ export default function BhaktiPage() {
             className="bg-white rounded-xl border border-black/10 p-4"
           >
             <p className="text-lg font-semibold text-clay">
-              {group.mood_en}
-              <span className="text-ink/60 font-normal text-base">
-                {" "}
-                · {group.mood_hi}
-              </span>
+              <span className="lang-en">{group.mood_en}</span>
+              <span className="lang-hi">{group.mood_hi}</span>
             </p>
             <ul className="mt-3 space-y-3">
               {group.songs.map((song) => (
@@ -58,10 +56,11 @@ export default function BhaktiPage() {
                     rel="noopener noreferrer"
                     className="text-base font-medium text-sage underline decoration-sage/40 underline-offset-2"
                   >
-                    {song.title_hi} <span className="text-ink/60">· {song.title_en}</span>
+                    <span className="lang-hi">{song.title_hi}</span>
+                    <span className="lang-en">{song.title_en}</span>
                   </a>
-                  <p className="text-sm text-ink/60 mt-1">{song.note_en}</p>
-                  <p className="text-sm text-ink/40">{song.note_hi}</p>
+                  <p className="text-sm text-ink/60 mt-1 lang-en">{song.note_en}</p>
+                  <p className="text-sm text-ink/50 lang-hi">{song.note_hi}</p>
                 </li>
               ))}
             </ul>
@@ -69,11 +68,11 @@ export default function BhaktiPage() {
         ))}
       </div>
 
-      <p className="text-center text-xs text-ink/40 mt-6">
-        Links open a YouTube search so you can choose your favorite singer's
-        version.
-        <br />
-        लिंक YouTube पर खोज खोलते हैं ताकि वह अपने पसंदीदा गायक का संस्करण चुन सकें।
+      <p className="text-center text-xs text-ink/40 mt-6 lang-en">
+        Links open a YouTube search so you can pick your favorite version.
+      </p>
+      <p className="text-center text-xs text-ink/40 mt-6 lang-hi">
+        लिंक YouTube पर खोज खोलते हैं ताकि आप अपनी पसंद का संस्करण चुन सकें।
       </p>
     </div>
   );

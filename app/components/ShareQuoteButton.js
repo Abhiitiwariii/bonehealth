@@ -15,7 +15,8 @@ export default function ShareQuoteButton({ quote }) {
       rel="noopener noreferrer"
       className="mt-3 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white text-sm font-medium rounded-lg px-3 py-2"
     >
-      📤 Share on WhatsApp / व्हाट्सएप पर भेजें
+      📤 <span className="lang-en">Share on WhatsApp</span>
+      <span className="lang-hi">व्हाट्सएप पर भेजें</span>
     </a>
   );
 }

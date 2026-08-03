@@ -15,17 +15,20 @@ export default function DietPage() {
     <div>
       <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
         <p className="text-lg font-semibold">
-          🍽️ Vegetarian Bone-Health Diet
+          🍽️ <span className="lang-en">Vegetarian Bone-Health Diet</span>
+          <span className="lang-hi">शाकाहारी हड्डी-स्वास्थ्य आहार</span>
         </p>
-        <p className="text-sm text-ink/60">शाकाहारी हड्डी-स्वास्थ्य आहार</p>
-        <p className="text-sm mt-2 text-ink/70">
-          Calcium needs vitamin D, protein, and a few other nutrients to
-          build strong bone. No single food does it alone. This is general
-          guidance. Ask your doctor if a supplement is also needed.
+        <p className="text-sm mt-2 text-ink/70 lang-en">
+          Calcium needs vitamin D, protein, and a few other nutrients. No
+          single food does it alone.
+        </p>
+        <p className="text-sm mt-2 text-ink/70 lang-hi">
+          कैल्शियम को विटामिन डी, प्रोटीन, और कुछ अन्य पोषक तत्वों की ज़रूरत
+          होती है। कोई एक भोजन अकेले काम नहीं करता।
         </p>
       </div>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4 lang-hi">
         <summary className="text-lg font-semibold text-clay cursor-pointer">
           📖 {nutritionBasicsHi.title}
         </summary>
@@ -43,21 +46,18 @@ export default function DietPage() {
             className="bg-white rounded-xl border border-black/10 p-4"
           >
             <p className="text-lg font-semibold text-clay">
-              {["🦴", "☀️", "🥜", "🥬"][i % 4]} {group.title_en}
-              <span className="text-ink/60 font-normal text-base">
-                {" "}
-                · {group.title_hi}
-              </span>
+              {["🦴", "☀️", "🥜", "🥬"][i % 4]}{" "}
+              <span className="lang-en">{group.title_en}</span>
+              <span className="lang-hi">{group.title_hi}</span>
             </p>
-            <p className="text-sm text-ink/60 italic mt-1">
-              {group.why_en}
-            </p>
-            <p className="text-sm text-ink/40 italic">{group.why_hi}</p>
+            <p className="text-sm text-ink/60 italic mt-1 lang-en">{group.why_en}</p>
+            <p className="text-sm text-ink/60 italic mt-1 lang-hi">{group.why_hi}</p>
             <ul className="mt-3 space-y-1 text-sm">
               {group.foods.map((f, i) => (
                 <li key={i}>
-                  <span className="text-sage">●</span> {f.en}
-                  <span className="text-ink/50"> · {f.hi}</span>
+                  <span className="text-sage">●</span>{" "}
+                  <span className="lang-en">{f.en}</span>
+                  <span className="lang-hi">{f.hi}</span>
                 </li>
               ))}
             </ul>
@@ -67,19 +67,17 @@ export default function DietPage() {
 
       <div className="mt-4 bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold text-clay">
-          🙏 {vratFriendlyFoods.title_en}
-          <span className="text-ink/60 font-normal text-base">
-            {" "}
-            · {vratFriendlyFoods.title_hi}
-          </span>
+          🙏 <span className="lang-en">{vratFriendlyFoods.title_en}</span>
+          <span className="lang-hi">{vratFriendlyFoods.title_hi}</span>
         </p>
-        <p className="text-sm text-ink/60 italic mt-1">{vratFriendlyFoods.note_en}</p>
-        <p className="text-sm text-ink/40 italic">{vratFriendlyFoods.note_hi}</p>
+        <p className="text-sm text-ink/60 italic mt-1 lang-en">{vratFriendlyFoods.note_en}</p>
+        <p className="text-sm text-ink/60 italic mt-1 lang-hi">{vratFriendlyFoods.note_hi}</p>
         <ul className="mt-3 space-y-1 text-sm">
           {vratFriendlyFoods.foods.map((f, i) => (
             <li key={i}>
-              <span className="text-sage">●</span> {f.en}
-              <span className="text-ink/50"> · {f.hi}</span>
+              <span className="text-sage">●</span>{" "}
+              <span className="lang-en">{f.en}</span>
+              <span className="lang-hi">{f.hi}</span>
             </li>
           ))}
         </ul>
@@ -87,16 +85,18 @@ export default function DietPage() {
 
       <div className="mt-6 bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold mb-3">
-          🍲 A Sample Day / एक दिन का उदाहरण
+          🍲 <span className="lang-en">A Sample Day</span>
+          <span className="lang-hi">एक दिन का उदाहरण</span>
         </p>
         <div className="space-y-3">
           {sampleDay.map((m) => (
             <div key={m.meal_en} className="border-l-4 border-sage/40 pl-3">
               <p className="font-semibold">
-                {m.meal_en} <span className="text-ink/50">· {m.meal_hi}</span>
+                <span className="lang-en">{m.meal_en}</span>
+                <span className="lang-hi">{m.meal_hi}</span>
               </p>
-              <p className="text-sm">{m.idea_en}</p>
-              <p className="text-sm text-ink/50">{m.idea_hi}</p>
+              <p className="text-sm lang-en">{m.idea_en}</p>
+              <p className="text-sm text-ink/50 lang-hi">{m.idea_hi}</p>
             </div>
           ))}
         </div>
@@ -104,14 +104,16 @@ export default function DietPage() {
 
       <div className="mt-6 bg-white rounded-xl border border-black/10 p-4">
         <p className="text-lg font-semibold mb-1">
-          💊 Supplements / सप्लीमेंट
+          💊 <span className="lang-en">Supplements</span>
+          <span className="lang-hi">सप्लीमेंट</span>
         </p>
-        <p className="text-sm text-ink/60 mb-3">
-          Ask your doctor before starting any of these. Links open in a new
-          tab to the NIH's public fact sheets, not a store.
-          <br />
-          इनमें से कोई भी शुरू करने से पहले डॉक्टर से पूछें। लिंक नए टैब में
-          NIH की सार्वजनिक जानकारी पर खुलते हैं, किसी दुकान पर नहीं।
+        <p className="text-sm text-ink/60 mb-3 lang-en">
+          Ask your doctor before starting any of these. Links open to NIH
+          fact sheets, not a store.
+        </p>
+        <p className="text-sm text-ink/60 mb-3 lang-hi">
+          इनमें से कोई भी शुरू करने से पहले डॉक्टर से पूछें। लिंक NIH की
+          जानकारी पर खुलते हैं, किसी दुकान पर नहीं।
         </p>
         <ul className="space-y-3 text-sm">
           {supplements.map((s) => (
@@ -122,10 +124,11 @@ export default function DietPage() {
                 rel="noopener noreferrer"
                 className="font-semibold text-sage underline decoration-sage/40 underline-offset-2"
               >
-                {s.name_en} <span className="text-ink/60 font-normal">· {s.name_hi}</span>
+                <span className="lang-en">{s.name_en}</span>
+                <span className="lang-hi">{s.name_hi}</span>
               </a>
-              <p className="mt-1">{s.info_en}</p>
-              <p className="text-ink/50">{s.info_hi}</p>
+              <p className="mt-1 lang-en">{s.info_en}</p>
+              <p className="text-ink/50 lang-hi">{s.info_hi}</p>
             </li>
           ))}
         </ul>
