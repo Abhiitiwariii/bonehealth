@@ -1,0 +1,40 @@
+<svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="cropBhakti">
+      <rect x="0" y="0" width="600" height="180" rx="20" />
+    </clipPath>
+    <radialGradient id="glow" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#E8A33D" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#E8A33D" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <g clip-path="url(#cropBhakti)">
+    <rect x="0" y="0" width="600" height="180" fill="#8A3A3A" />
+    <rect x="0" y="0" width="600" height="180" fill="url(#glow)" />
+
+    <!-- om symbol, subtle -->
+    <text x="500" y="70" font-family="Georgia, serif" font-size="54" fill="#FDF6EC" opacity="0.18" text-anchor="middle">ॐ</text>
+
+    <!-- flame glow -->
+    <circle cx="300" cy="86" r="46" fill="#E8A33D" opacity="0.25" />
+
+    <!-- flame -->
+    <path d="M300 60 c10 14 14 24 14 34 c0 12 -9 20 -14 20 c-5 0 -14 -8 -14 -20 c0 -10 4 -20 14 -34 Z" fill="#E8A33D" />
+    <path d="M300 78 c5 8 7 14 7 20 c0 7 -4 11 -7 11 c-3 0 -7 -4 -7 -11 c0 -6 2 -12 7 -20 Z" fill="#FDF6EC" opacity="0.85" />
+
+    <!-- diya (lamp) -->
+    <path d="M244 128 q56 30 112 0 q-10 22 -56 22 q-46 0 -56 -22 Z" fill="#E8A33D" />
+    <ellipse cx="300" cy="128" rx="56" ry="12" fill="#C1543A" />
+
+    <!-- flower petals scattered -->
+    <circle cx="150" cy="50" r="7" fill="#E8A33D" opacity="0.7" />
+    <circle cx="168" cy="60" r="5" fill="#E8A33D" opacity="0.55" />
+    <circle cx="140" cy="66" r="4" fill="#FDF6EC" opacity="0.5" />
+    <circle cx="440" cy="130" r="7" fill="#E8A33D" opacity="0.6" />
+    <circle cx="460" cy="118" r="5" fill="#FDF6EC" opacity="0.45" />
+    <circle cx="120" cy="130" r="5" fill="#FDF6EC" opacity="0.4" />
+
+    <!-- base shadow -->
+    <ellipse cx="300" cy="150" rx="90" ry="10" fill="#000000" opacity="0.12" />
+  </g>
+</svg>

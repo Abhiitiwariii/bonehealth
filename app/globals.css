@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* A soft, warm gradient rather than flat white or bright color. Warm
+     off-white/cream tones and gentle gradients read as calm and easy on
+     the eyes for older users, avoiding both stark white glare and heavy
+     dark backgrounds. */
+  background: linear-gradient(180deg, #FDF6EC 0%, #F6E9D8 100%);
+  background-attachment: fixed;
+  color: #2E2A26;
+  min-height: 100vh;
+}
+
+/* Accessibility: text size, applied on <html> so rem-based Tailwind sizes
+   scale everywhere. */
+html.text-scale-normal {
+  font-size: 100%;
+}
+html.text-scale-large {
+  font-size: 115%;
+}
+html.text-scale-extra-large {
+  font-size: 130%;
+}
+
+/* Accessibility: high contrast, removes faded/low-opacity secondary text
+   so everything reads at full strength. */
+html.high-contrast .text-ink\/70,
+html.high-contrast .text-ink\/60,
+html.high-contrast .text-ink\/50,
+html.high-contrast .text-ink\/40 {
+  color: #1A1714;
+}
+html.high-contrast body {
+  background-image: none;
+  background-color: #FFFFFF;
+}
+html.high-contrast .bg-cream {
+  background-color: #FFFFFF;
+}
+
+/* Language toggle: show only the selected language. Defaults to showing
+   both (no data-lang yet) so there's no flash of missing content before
+   the toggle reads localStorage on mount. */
+html[data-lang="hi"] .lang-en {
+  display: none;
+}
+html[data-lang="en"] .lang-hi {
+  display: none;
+}
