@@ -1,6 +1,5 @@
 import "./globals.css";
 import Nav from "./components/Nav";
-import AccessibilityControls from "./components/AccessibilityControls";
 import LanguageToggle from "./components/LanguageToggle";
 
 export const metadata = {
@@ -11,26 +10,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
-        <header className="bg-gradient-to-r from-maroon to-clay text-white px-4 py-5 shadow-sm border-b-4 border-marigold">
-          <div className="max-w-2xl mx-auto flex items-start justify-between gap-3">
-            <div>
-              <h1 className="text-2xl font-bold leading-tight">
-                🦴 <span className="lang-hi">आरोग्य साथी</span>
-                <span className="lang-en">Bone Health Arogya Saathi</span>
-              </h1>
-              <p className="text-sm opacity-90 mt-1 lang-en">
-                Daily routine, diet &amp; progress
-              </p>
-              <p className="text-sm opacity-90 mt-1 lang-hi">
-                रोज़ की दिनचर्या, आहार और प्रगति
-              </p>
-            </div>
-            <LanguageToggle />
+      <body className="min-h-screen flex flex-col bg-surface">
+        <header className="bg-white px-4 py-5 border-b border-black/5">
+          <div className="max-w-2xl mx-auto pr-14">
+            <h1 className="text-2xl font-bold leading-tight text-ink">
+              🦴 <span className="lang-hi">आरोग्य साथी</span>
+              <span className="lang-en">Bone Health Arogya Saathi</span>
+            </h1>
+            <p className="text-sm text-ink/60 mt-1 lang-en">
+              Daily routine, diet &amp; progress
+            </p>
+            <p className="text-sm text-ink/60 mt-1 lang-hi">
+              रोज़ की दिनचर्या, आहार और प्रगति
+            </p>
           </div>
         </header>
 
-        <Nav />
+        <LanguageToggle />
 
         <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-6">
           {children}
@@ -41,7 +37,7 @@ export default function RootLayout({ children }) {
           <span className="lang-hi">सदैव अपने डॉक्टर की सलाह का पालन करें।</span>
         </footer>
 
-        <AccessibilityControls />
+        <Nav />
       </body>
     </html>
   );

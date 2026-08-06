@@ -18,15 +18,15 @@ export default function BhaktiPage() {
         className="w-full h-auto rounded-xl mb-4 shadow-sm"
       />
 
-      <div className="bg-gradient-to-br from-maroon to-clay text-white rounded-xl p-4 mb-6 shadow-sm border-t-4 border-marigold">
-        <p className="text-xs uppercase tracking-wide opacity-80 mb-1">
+      <div className="bg-white border border-black/10 rounded-xl p-4 mb-6 shadow-sm">
+        <p className="text-xs uppercase tracking-wide text-ink/50 mb-1">
           🪷 <span className="lang-en">Today's Krishna Quote</span>
           <span className="lang-hi">आज का श्री कृष्ण वचन</span>
         </p>
         <p className="text-lg leading-relaxed lang-hi">{quote.sanskrit}</p>
         <p className="mt-2 text-base lang-hi">{quote.hindi}</p>
-        <p className="mt-1 text-sm opacity-90 italic lang-en">{quote.english}</p>
-        <p className="mt-2 text-xs opacity-70">{quote.source}</p>
+        <p className="mt-1 text-sm text-ink/70 italic lang-en">{quote.english}</p>
+        <p className="mt-2 text-xs text-ink/50">{quote.source}</p>
         <ShareQuoteButton quote={quote} />
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   loadProfile,
   saveProfile,
@@ -14,6 +15,12 @@ import {
 } from "../../lib/fileStore";
 import TestSuggestions from "../components/TestSuggestions";
 import HealthNumbersForm from "../components/HealthNumbersForm";
+import AccessibilityControls from "../components/AccessibilityControls";
+
+const moreLinks = [
+  { href: "/bhakti", emoji: "🪷", label_en: "Bhakti", label_hi: "भक्ति" },
+  { href: "/fun", emoji: "🎬", label_en: "Fun", label_hi: "मनोरंजन" },
+];
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState(null);
@@ -88,6 +95,22 @@ export default function ProfilePage() {
           इसे एक बार भरें, ताकि आपको व्यक्तिगत BMI नोट मिले। यह जानकारी इसी
           डिवाइस पर रहती है।
         </p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        {moreLinks.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="flex items-center gap-3 bg-white border border-black/10 rounded-xl p-4 shadow-sm"
+          >
+            <span className="text-3xl">{item.emoji}</span>
+            <span className="text-lg font-semibold">
+              <span className="lang-en block">{item.label_en}</span>
+              <span className="lang-hi block">{item.label_hi}</span>
+            </span>
+          </Link>
+        ))}
       </div>
 
       <div className="bg-white rounded-xl border border-black/10 p-4 mb-4 space-y-4">
@@ -187,7 +210,7 @@ export default function ProfilePage() {
 
         <button
           onClick={handleSave}
-          className="w-full bg-clay text-white font-semibold py-3 rounded-lg text-lg"
+          className="w-full bg-primary text-white font-semibold py-3 rounded-lg text-lg"
         >
           <span className="lang-en">{saved ? "Saved ✓" : "Save Profile"}</span>
           <span className="lang-hi">{saved ? "सेव हो गया ✓" : "प्रोफ़ाइल सेव करें"}</span>
@@ -196,7 +219,7 @@ export default function ProfilePage() {
 
       <HealthNumbersForm />
 
-      <div className="bg-white rounded-xl border border-black/10 p-4">
+      <div className="bg-white rounded-xl border border-black/10 p-4 mb-6">
         <p className="text-lg font-semibold mb-1">
           📎 <span className="lang-en">Attach Report Files</span>
           <span className="lang-hi">रिपोर्ट फ़ाइलें जोड़ें</span>
@@ -252,8 +275,16 @@ export default function ProfilePage() {
         )}
       </div>
 
-      <div className="mt-4">
+      <div className="mb-6">
         <TestSuggestions profile={profile} />
+      </div>
+
+      <div className="bg-white rounded-xl border border-black/10 p-4">
+        <p className="text-lg font-semibold mb-3">
+          ⚙️ <span className="lang-en">Settings</span>
+          <span className="lang-hi">सेटिंग्स</span>
+        </p>
+        <AccessibilityControls />
       </div>
     </div>
   );

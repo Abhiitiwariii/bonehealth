@@ -40,7 +40,7 @@ export default function ExerciseVideo({ videoId, videoSource, videoSearch }) {
           className="w-full h-auto block"
         />
         <span className="absolute inset-0 bg-black/25 flex items-center justify-center">
-          <span className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center text-2xl text-clay shadow-lg">
+          <span className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center text-2xl text-primary shadow-lg">
             ▶
           </span>
         </span>

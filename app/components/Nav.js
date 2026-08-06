@@ -1,36 +1,44 @@
 "use client";
 
+// Persistent bottom navigation bar, 4 items max, always visible. Replaces
+// the old horizontal top tab row. Diet/Progress live under Records,
+// Bhakti/Fun/settings live under Profile, so every existing route stays
+// reachable without a hamburger menu.
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "Today", hindi: "आज" },
-  { href: "/profile", label: "Profile", hindi: "प्रोफ़ाइल" },
-  { href: "/diet", label: "Diet", hindi: "आहार" },
-  { href: "/bhakti", label: "Bhakti", hindi: "भक्ति" },
-  { href: "/fun", label: "Fun", hindi: "मनोरंजन" },
-  { href: "/doctors", label: "Doctors", hindi: "डॉक्टर" },
-  { href: "/log", label: "Progress", hindi: "प्रगति" },
+  { href: "/", label: "Home", hindi: "होम", icon: "🏠" },
+  { href: "/records", label: "Records", hindi: "रिकॉर्ड", icon: "📊" },
+  { href: "/reminders", label: "Reminders", hindi: "रिमाइंडर", icon: "🔔" },
+  { href: "/profile", label: "Profile", hindi: "प्रोफ़ाइल", icon: "👤" },
 ];
+
+function isActive(pathname, href) {
+  if (href === "/") return pathname === "/";
+  if (href === "/records") return pathname === "/records" || pathname === "/diet" || pathname === "/log";
+  if (href === "/profile") return pathname === "/profile" || pathname === "/bhakti" || pathname === "/fun";
+  return pathname === href;
+}
 
 export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-white border-b border-black/5 sticky top-0 z-10">
-      <div className="max-w-2xl mx-auto flex overflow-x-auto">
+    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-black/10 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+      <div className="max-w-2xl mx-auto grid grid-cols-4">
         {links.map((link) => {
-          const active = pathname === link.href;
+          const active = isActive(pathname, link.href);
           return (
             <Link
               key={link.href}
               href={link.href}
-              className={`shrink-0 basis-[14.28%] min-w-[76px] text-center py-3 text-base font-medium border-b-4 transition-colors whitespace-nowrap ${
-                active
-                  ? "border-marigold text-maroon bg-marigold/10"
-                  : "border-transparent text-ink/60"
+              className={`flex flex-col items-center justify-center gap-0.5 py-2.5 text-sm font-semibold ${
+                active ? "text-primary" : "text-ink/50"
               }`}
             >
+              <span className="text-2xl leading-none">{link.icon}</span>
               <span className="lang-en">{link.label}</span>
               <span className="lang-hi">{link.hindi}</span>
             </Link>

@@ -2,7 +2,9 @@
 
 // Switches the whole app between Hindi-only and English-only, by setting
 // data-lang on <html>. globals.css hides whichever language isn't picked.
-// Saved to localStorage so it's remembered on this device.
+// Saved to localStorage so it's remembered on this device. Single tap
+// icon-style button (shows the language you'll switch TO) rather than two
+// separate labels, always visible in the top-right corner.
 
 import { useEffect, useState } from "react";
 
@@ -17,26 +19,20 @@ export default function LanguageToggle() {
     document.documentElement.setAttribute("data-lang", saved);
   }, []);
 
-  function choose(value) {
-    setLang(value);
-    localStorage.setItem(LANG_KEY, value);
-    document.documentElement.setAttribute("data-lang", value);
+  function toggle() {
+    const next = lang === "hi" ? "en" : "hi";
+    setLang(next);
+    localStorage.setItem(LANG_KEY, next);
+    document.documentElement.setAttribute("data-lang", next);
   }
 
   return (
-    <div className="inline-flex rounded-full bg-white/15 p-1 text-sm font-semibold">
-      <button
-        onClick={() => choose("hi")}
-        className={`px-3 py-1 rounded-full ${lang === "hi" ? "bg-white text-clay" : "text-white"}`}
-      >
-        हिं
-      </button>
-      <button
-        onClick={() => choose("en")}
-        className={`px-3 py-1 rounded-full ${lang === "en" ? "bg-white text-clay" : "text-white"}`}
-      >
-        EN
-      </button>
-    </div>
+    <button
+      onClick={toggle}
+      aria-label={lang === "hi" ? "Switch to English" : "हिंदी में बदलें"}
+      className="fixed top-3 right-3 z-30 w-11 h-11 rounded-full bg-white border-2 border-black/10 shadow-sm flex items-center justify-center text-lg font-bold text-ink"
+    >
+      {lang === "hi" ? "अ" : "A"}
+    </button>
   );
 }

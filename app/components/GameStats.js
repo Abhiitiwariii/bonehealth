@@ -35,7 +35,7 @@ export default function GameStats({ refreshKey }) {
             <span className="lang-en">Points</span>
             <span className="lang-hi">अंक</span>
           </p>
-          <p className="text-2xl font-bold text-maroon mt-1">{stats.points}</p>
+          <p className="text-2xl font-bold text-primary mt-1">{stats.points}</p>
         </div>
       </div>
 
@@ -49,7 +49,7 @@ export default function GameStats({ refreshKey }) {
             key={b.id}
             className={`flex items-center gap-1 rounded-full px-3 py-1 text-sm border ${
               b.earned
-                ? "bg-marigold/15 border-marigold/50 text-maroon"
+                ? "bg-primary/10 border-primary/30 text-primary"
                 : "bg-black/5 border-black/10 text-ink/30"
             }`}
           >
