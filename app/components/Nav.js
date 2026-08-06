@@ -34,11 +34,17 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex flex-col items-center justify-center gap-0.5 py-2.5 text-sm font-semibold ${
-                active ? "text-primary" : "text-ink/50"
+              className={`flex flex-col items-center justify-center gap-0.5 py-2.5 text-sm font-semibold transition-colors ${
+                active ? "text-orange-600" : "text-ink/40"
               }`}
             >
-              <span className="text-2xl leading-none">{link.icon}</span>
+              <span
+                className={`text-2xl leading-none w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
+                  active ? "bg-orange-100" : ""
+                }`}
+              >
+                {link.icon}
+              </span>
               <span className="lang-en">{link.label}</span>
               <span className="lang-hi">{link.hindi}</span>
             </Link>
