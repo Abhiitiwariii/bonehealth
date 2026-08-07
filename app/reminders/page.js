@@ -1,67 +1,178 @@
-export const metadata = {
-  title: "Reminders | रिमाइंडर",
-};
+"use client";
+
+import { useEffect, useState } from "react";
+import { loadReminderSettings, saveReminderSettings } from "../../lib/reminders";
 
 export default function RemindersPage() {
+  const [settings, setSettings] = useState(null);
+  const [permission, setPermission] = useState("default");
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    setSettings(loadReminderSettings());
+    if (typeof Notification !== "undefined") {
+      setPermission(Notification.permission);
+    }
+  }, []);
+
+  function update(patch) {
+    setSettings((s) => ({ ...s, ...patch }));
+  }
+
+  function updateMedicineTime(i, value) {
+    setSettings((s) => {
+      const times = [...s.medicineTimes];
+      times[i] = value;
+      return { ...s, medicineTimes: times };
+    });
+  }
+
+  function save() {
+    saveReminderSettings(settings);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  }
+
+  async function requestPermission() {
+    if (typeof Notification === "undefined") return;
+    const result = await Notification.requestPermission();
+    setPermission(result);
+  }
+
+  if (!settings) return null;
+
   return (
     <div>
-      <div className="bg-gradient-to-br from-violet-500 to-indigo-600 rounded-3xl p-6 text-center text-white shadow-lg shadow-black/10 overflow-hidden relative">
+      <div className="bg-gradient-to-br from-violet-500 to-indigo-600 rounded-3xl p-6 text-white shadow-lg shadow-black/10 overflow-hidden relative mb-4">
         <span className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
-        <span className="absolute -left-8 bottom-0 w-20 h-20 rounded-full bg-white/10" />
-        <p className="text-6xl mb-2">🔔</p>
+        <p className="text-5xl mb-2">🔔</p>
         <p className="text-xl font-bold">
-          <span className="lang-en">Reminders are coming!</span>
-          <span className="lang-hi">रिमाइंडर जल्द आ रहे हैं!</span>
+          <span className="lang-en">Your Reminders</span>
+          <span className="lang-hi">आपके रिमाइंडर</span>
         </p>
         <p className="text-sm text-white/80 mt-2">
-          <span className="lang-en">A new way to earn points every day.</span>
-          <span className="lang-hi">हर दिन अंक कमाने का नया तरीका।</span>
+          <span className="lang-en">
+            Alerts only work while this app is open in your browser — this
+            device can't get push notifications when the app or browser is
+            fully closed.
+          </span>
+          <span className="lang-hi">
+            अलर्ट तभी काम करते हैं जब यह ऐप आपके ब्राउज़र में खुला हो — ऐप या
+            ब्राउज़र बंद होने पर सूचना नहीं मिलेगी।
+          </span>
         </p>
 
-        <div className="mt-5 bg-white/15 rounded-full h-3 overflow-hidden">
-          <div className="h-full w-1/3 bg-amber-300 rounded-full" />
-        </div>
-        <p className="text-xs text-white/70 mt-1">
-          <span className="lang-en">Feature unlocking soon</span>
-          <span className="lang-hi">फीचर जल्द अनलॉक होगा</span>
-        </p>
+        {permission !== "granted" && (
+          <button
+            onClick={requestPermission}
+            className="mt-4 bg-white/20 hover:bg-white/30 rounded-full px-4 py-2 text-sm font-semibold"
+          >
+            🔔 <span className="lang-en">Enable browser alerts</span>
+            <span className="lang-hi">ब्राउज़र अलर्ट चालू करें</span>
+          </button>
+        )}
+        {permission === "granted" && (
+          <p className="mt-4 text-sm bg-white/15 inline-block rounded-full px-4 py-2 font-semibold">
+            ✅ <span className="lang-en">Browser alerts enabled</span>
+            <span className="lang-hi">ब्राउज़र अलर्ट चालू है</span>
+          </p>
+        )}
       </div>
 
-      <div className="grid grid-cols-2 gap-3 mt-4">
-        <div className="bg-white rounded-2xl border border-black/10 p-4 text-center opacity-60">
-          <p className="text-3xl mb-1">💊</p>
-          <p className="text-sm font-semibold">
-            <span className="lang-en">Medicine time</span>
-            <span className="lang-hi">दवा का समय</span>
+      <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-4 mb-4">
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-lg font-bold flex items-center gap-2">
+            <span className="text-2xl">🦴</span>
+            <span>
+              <span className="lang-en block">Exercise Nudge</span>
+              <span className="lang-hi block">व्यायाम याद</span>
+            </span>
           </p>
-          <p className="text-xs text-ink/50 mt-1">
-            <span className="lang-en">🔒 Locked</span>
-            <span className="lang-hi">🔒 लॉक</span>
-          </p>
+          <button
+            onClick={() => update({ exerciseEnabled: !settings.exerciseEnabled })}
+            className={`w-14 h-8 rounded-full transition-colors relative shrink-0 ${
+              settings.exerciseEnabled ? "bg-orange-500" : "bg-black/15"
+            }`}
+          >
+            <span
+              className={`absolute top-1 w-6 h-6 rounded-full bg-white shadow transition-transform ${
+                settings.exerciseEnabled ? "translate-x-7" : "translate-x-1"
+              }`}
+            />
+          </button>
         </div>
-        <div className="bg-white rounded-2xl border border-black/10 p-4 text-center opacity-60">
-          <p className="text-3xl mb-1">🦴</p>
-          <p className="text-sm font-semibold">
-            <span className="lang-en">Exercise nudge</span>
-            <span className="lang-hi">व्यायाम याद</span>
+        <label className="block">
+          <span className="text-sm text-ink/60 mb-1 block">
+            <span className="lang-en">Nudge me at</span>
+            <span className="lang-hi">मुझे याद दिलाएं</span>
+          </span>
+          <input
+            type="time"
+            value={settings.exerciseTime}
+            onChange={(e) => update({ exerciseTime: e.target.value })}
+            disabled={!settings.exerciseEnabled}
+            className="border border-black/15 rounded-lg p-2 text-base disabled:opacity-40"
+          />
+        </label>
+      </div>
+
+      <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-4 mb-4">
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-lg font-bold flex items-center gap-2">
+            <span className="text-2xl">💊</span>
+            <span>
+              <span className="lang-en block">Medicine Time</span>
+              <span className="lang-hi block">दवा का समय</span>
+            </span>
           </p>
-          <p className="text-xs text-ink/50 mt-1">
-            <span className="lang-en">🔒 Locked</span>
-            <span className="lang-hi">🔒 लॉक</span>
-          </p>
+          <button
+            onClick={() => update({ medicineEnabled: !settings.medicineEnabled })}
+            className={`w-14 h-8 rounded-full transition-colors relative shrink-0 ${
+              settings.medicineEnabled ? "bg-orange-500" : "bg-black/15"
+            }`}
+          >
+            <span
+              className={`absolute top-1 w-6 h-6 rounded-full bg-white shadow transition-transform ${
+                settings.medicineEnabled ? "translate-x-7" : "translate-x-1"
+              }`}
+            />
+          </button>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          {settings.medicineTimes.map((time, i) => (
+            <label key={i} className="block">
+              <span className="text-sm text-ink/60 mb-1 block">
+                <span className="lang-en">{i === 0 ? "Morning" : "Evening"}</span>
+                <span className="lang-hi">{i === 0 ? "सुबह" : "शाम"}</span>
+              </span>
+              <input
+                type="time"
+                value={time}
+                onChange={(e) => updateMedicineTime(i, e.target.value)}
+                disabled={!settings.medicineEnabled}
+                className="w-full border border-black/15 rounded-lg p-2 text-base disabled:opacity-40"
+              />
+            </label>
+          ))}
         </div>
       </div>
+
+      <button
+        onClick={save}
+        className="w-full bg-primary text-white font-bold py-3 rounded-xl text-lg"
+      >
+        <span className="lang-en">{saved ? "Saved ✓" : "Save Reminders"}</span>
+        <span className="lang-hi">{saved ? "सेव हो गया ✓" : "रिमाइंडर सेव करें"}</span>
+      </button>
 
       <p className="text-center text-sm text-ink/60 mt-6">
         <span className="lang-en">
-          In the meantime, keep your streak alive on{" "}
-          <span className="font-semibold text-orange-600">Today's Exercise</span>{" "}
-          and log your day on{" "}
-          <span className="font-semibold text-indigo-600">Progress</span>.
+          Keep the app open (or in a background tab) around your reminder
+          time so the alert can appear.
         </span>
         <span className="lang-hi">
-          तब तक "आज का व्यायाम" पर अपनी लगातार दिनों की गिनती बनाए रखें और
-          "प्रगति" में अपना दिन दर्ज करें।
+          अलर्ट दिखने के लिए, रिमाइंडर के समय ऐप को खुला रखें (या बैकग्राउंड
+          टैब में)।
         </span>
       </p>
     </div>

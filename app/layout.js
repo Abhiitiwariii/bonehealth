@@ -1,6 +1,8 @@
 import "./globals.css";
 import Nav from "./components/Nav";
 import LanguageToggle from "./components/LanguageToggle";
+import ReminderChecker from "./components/ReminderChecker";
+import FeedbackWidget from "./components/FeedbackWidget";
 
 export const metadata = {
   title: "Bone Health · Arogya Saathi | हड्डी स्वास्थ्य · आरोग्य साथी",
@@ -46,6 +48,8 @@ export default function RootLayout({ children }) {
           </a>
         </footer>
 
+        <ReminderChecker />
+        <FeedbackWidget />
         <Nav />
       </body>
     </html>
