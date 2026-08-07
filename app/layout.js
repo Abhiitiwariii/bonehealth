@@ -33,8 +33,17 @@ export default function RootLayout({ children }) {
         </main>
 
         <footer className="text-center text-sm text-ink/60 py-6 px-4">
-          <span className="lang-en">Always follow your doctor's advice.</span>
-          <span className="lang-hi">सदैव अपने डॉक्टर की सलाह का पालन करें।</span>
+          <p>
+            <span className="lang-en">Always follow your doctor's advice.</span>
+            <span className="lang-hi">सदैव अपने डॉक्टर की सलाह का पालन करें।</span>
+          </p>
+          <a
+            href="mailto:tabhilash19@gmail.com?subject=Bone%20Health%20App%20Feedback"
+            className="inline-flex items-center gap-1 mt-3 text-primary font-medium underline decoration-primary/30 underline-offset-2"
+          >
+            💬 <span className="lang-en">Send Feedback</span>
+            <span className="lang-hi">फ़ीडबैक भेजें</span>
+          </a>
         </footer>
 
         <Nav />
