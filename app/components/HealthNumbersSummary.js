@@ -51,7 +51,7 @@ export default function HealthNumbersSummary() {
 
   if (!hasAnyHealthNumbers(numbers)) {
     return (
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-6">
+      <div className="bg-white rounded-2xl border border-black/10 p-4 mb-6 shadow-sm">
         <p className="text-lg font-semibold">
           🔢 <span className="lang-en">Your Health Numbers</span>
           <span className="lang-hi">आपके स्वास्थ्य आंकड़े</span>
@@ -65,7 +65,7 @@ export default function HealthNumbersSummary() {
         </p>
         <Link
           href="/profile"
-          className="inline-block mt-3 bg-clay text-white text-sm font-medium rounded-lg px-4 py-2"
+          className="inline-block mt-3 bg-gradient-to-r from-clay to-marigold text-white text-sm font-medium rounded-lg px-4 py-2 shadow-sm active:scale-[0.97] transition-transform"
         >
           <span className="lang-en">Go to Profile</span>
           <span className="lang-hi">प्रोफ़ाइल पर जाएं</span>
@@ -80,7 +80,7 @@ export default function HealthNumbersSummary() {
   const hb = interpretHemoglobin(numbers.hemoglobin, profile?.gender);
 
   return (
-    <div className="bg-white rounded-xl border border-black/10 p-4 mb-6">
+    <div className="bg-white rounded-2xl border border-black/10 p-4 mb-6 shadow-sm">
       <p className="text-lg font-semibold">
         🔢 <span className="lang-en">Your Health Numbers</span>
         <span className="lang-hi">आपके स्वास्थ्य आंकड़े</span>

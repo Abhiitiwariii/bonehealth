@@ -7,7 +7,7 @@ export default function TestSuggestions({ profile }) {
   const tests = orderedTestSuggestions(profile);
 
   return (
-    <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+    <div className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
       <p className="text-lg font-semibold mb-1">
         🩺 <span className="lang-en">Tests Worth Asking About</span>
         <span className="lang-hi">पूछने लायक जांच</span>

@@ -5,34 +5,34 @@ import {
   vratFriendlyFoods,
 } from "../../lib/diet";
 import { supplements } from "../../lib/supplements";
+import DietLogForm from "../components/DietLogForm";
+import PageHero from "../components/PageHero";
 
 export const metadata = {
   title: "Diet Guide | आहार मार्गदर्शिका",
 };
 
+const groupAccents = [
+  "border-l-clay",
+  "border-l-marigold",
+  "border-l-amber-600",
+  "border-l-sage",
+];
+
 export default function DietPage() {
   return (
     <div>
-      <img
-        src="/images/diet-illustration.svg"
-        alt=""
-        className="w-full h-auto rounded-xl mb-4 shadow-sm"
+      <PageHero
+        emoji="🍽️"
+        title_en="Vegetarian Bone-Health Diet"
+        title_hi="शाकाहारी हड्डी-स्वास्थ्य आहार"
+        subtitle_en="Calcium needs vitamin D, protein, and a few other nutrients. No single food does it alone."
+        subtitle_hi="कैल्शियम को विटामिन डी, प्रोटीन, और कुछ अन्य पोषक तत्वों की ज़रूरत होती है। कोई एक भोजन अकेले काम नहीं करता।"
+        from="from-emerald-400"
+        to="to-green-600"
       />
 
-      <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">
-          🍽️ <span className="lang-en">Vegetarian Bone-Health Diet</span>
-          <span className="lang-hi">शाकाहारी हड्डी-स्वास्थ्य आहार</span>
-        </p>
-        <p className="text-sm mt-2 text-ink/70 lang-en">
-          Calcium needs vitamin D, protein, and a few other nutrients. No
-          single food does it alone.
-        </p>
-        <p className="text-sm mt-2 text-ink/70 lang-hi">
-          कैल्शियम को विटामिन डी, प्रोटीन, और कुछ अन्य पोषक तत्वों की ज़रूरत
-          होती है। कोई एक भोजन अकेले काम नहीं करता।
-        </p>
-      </div>
+      <DietLogForm />
 
       <details className="bg-white rounded-xl border border-black/10 p-4 mb-4 lang-hi">
         <summary className="text-lg font-semibold text-clay cursor-pointer">
@@ -49,7 +49,7 @@ export default function DietPage() {
         {nutrientGroups.map((group, i) => (
           <div
             key={group.title_en}
-            className="bg-white rounded-xl border border-black/10 p-4"
+            className={`bg-white rounded-xl border border-black/10 border-l-4 ${groupAccents[i % 4]} p-4 shadow-sm`}
           >
             <p className="text-lg font-semibold text-clay">
               {["🦴", "☀️", "🥜", "🥬"][i % 4]}{" "}

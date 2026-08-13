@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { exercises } from "../../lib/exercises";
 import { painTips, whenToCallDoctor } from "../../lib/painCare";
+import { syncCheckin } from "../../lib/cloudSync";
+import PageHero from "../components/PageHero";
 
 const HISTORY_KEY = "bone-history";
 
@@ -65,6 +67,7 @@ export default function LogPage() {
     hist.sort((a, b) => (a.date < b.date ? 1 : -1));
     localStorage.setItem(HISTORY_KEY, JSON.stringify(hist));
     setHistory(hist);
+    syncCheckin(entry);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   }
@@ -81,14 +84,15 @@ export default function LogPage() {
 
   return (
     <div>
-      <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">
-          📋 <span className="lang-en">Today's Check-In</span>
-          <span className="lang-hi">आज की जानकारी दर्ज करें</span>
-        </p>
-      </div>
+      <PageHero
+        emoji="📋"
+        title_en="Today's Check-In"
+        title_hi="आज की जानकारी दर्ज करें"
+        from="from-indigo-400"
+        to="to-violet-600"
+      />
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <div className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <label className="block mb-3">
           <span className="font-semibold lang-en">Knee / joint pain today</span>
           <span className="font-semibold lang-hi">आज घुटने/जोड़ में दर्द</span>
@@ -137,14 +141,14 @@ export default function LogPage() {
 
         <button
           onClick={handleSave}
-          className="mt-4 w-full bg-clay text-white font-semibold py-3 rounded-lg text-lg"
+          className="mt-4 w-full bg-gradient-to-r from-clay to-maroon text-white font-semibold py-3 rounded-xl text-lg shadow-md active:scale-[0.98] transition-transform"
         >
           <span className="lang-en">{saved ? "Saved ✓" : "Save Today"}</span>
           <span className="lang-hi">{saved ? "सेव हो गया ✓" : "आज का डेटा सेव करें"}</span>
         </button>
       </div>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <summary className="text-lg font-semibold cursor-pointer">
           🩹 <span className="lang-en">Comfort Tips</span>
           <span className="lang-hi">आराम के उपाय</span>
@@ -186,7 +190,7 @@ export default function LogPage() {
         </div>
       </details>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4">
+      <div className="bg-white rounded-2xl border border-black/10 p-4 shadow-sm">
         <p className="text-lg font-semibold mb-3">
           📊 <span className="lang-en">History</span>
           <span className="lang-hi">इतिहास</span>
@@ -235,10 +239,12 @@ export default function LogPage() {
       </div>
 
       <p className="text-center text-xs text-ink/40 mt-4 lang-en">
-        Saved only on this device, not sent anywhere.
+        Saved on this device, and synced securely so you can track your
+        progress over time.
       </p>
       <p className="text-center text-xs text-ink/40 mt-4 lang-hi">
-        केवल इसी डिवाइस पर सेव, कहीं भेजा नहीं जाता।
+        यह जानकारी इस डिवाइस पर सेव होती है, और आपकी प्रगति ट्रैक करने के लिए
+        सुरक्षित रूप से सिंक होती है।
       </p>
     </div>
   );

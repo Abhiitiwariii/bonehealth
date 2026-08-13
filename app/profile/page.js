@@ -16,10 +16,25 @@ import {
 import TestSuggestions from "../components/TestSuggestions";
 import HealthNumbersForm from "../components/HealthNumbersForm";
 import AccessibilityControls from "../components/AccessibilityControls";
+import PageHero from "../components/PageHero";
 
 const moreLinks = [
-  { href: "/bhakti", emoji: "🪷", label_en: "Bhakti", label_hi: "भक्ति" },
-  { href: "/fun", emoji: "🎬", label_en: "Fun", label_hi: "मनोरंजन" },
+  {
+    href: "/bhakti",
+    emoji: "🪷",
+    label_en: "Bhakti",
+    label_hi: "भक्ति",
+    from: "from-fuchsia-500",
+    to: "to-purple-700",
+  },
+  {
+    href: "/fun",
+    emoji: "🎬",
+    label_en: "Fun",
+    label_hi: "मनोरंजन",
+    from: "from-sky-400",
+    to: "to-blue-600",
+  },
 ];
 
 export default function ProfilePage() {
@@ -82,29 +97,26 @@ export default function ProfilePage() {
         className="w-full h-auto rounded-xl mb-4 shadow-sm"
       />
 
-      <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">
-          👤 <span className="lang-en">Your Profile</span>
-          <span className="lang-hi">आपकी प्रोफ़ाइल</span>
-        </p>
-        <p className="text-sm mt-2 text-ink/70 lang-en">
-          Fill this in once for a personalized BMI note. Nothing here leaves
-          this device.
-        </p>
-        <p className="text-sm mt-2 text-ink/70 lang-hi">
-          इसे एक बार भरें, ताकि आपको व्यक्तिगत BMI नोट मिले। यह जानकारी इसी
-          डिवाइस पर रहती है।
-        </p>
-      </div>
+      <PageHero
+        emoji="👤"
+        title_en="Your Profile"
+        title_hi="आपकी प्रोफ़ाइल"
+        subtitle_en="Fill this in once for a personalized BMI note. Saved on this device and synced securely to help track your progress."
+        subtitle_hi="इसे एक बार भरें, ताकि आपको व्यक्तिगत BMI नोट मिले। यह जानकारी इस डिवाइस पर सेव होती है और आपकी प्रगति ट्रैक करने के लिए सुरक्षित रूप से सिंक होती है।"
+        from="from-clay"
+        to="to-marigold"
+      />
 
       <div className="grid grid-cols-2 gap-3 mb-6">
         {moreLinks.map((item) => (
           <Link
             key={item.href}
+            data-hero
             href={item.href}
-            className="flex items-center gap-3 bg-white border border-black/10 rounded-xl p-4 shadow-sm"
+            className={`relative overflow-hidden flex items-center gap-3 bg-gradient-to-br ${item.from} ${item.to} text-white rounded-2xl p-4 shadow-md active:scale-[0.97] transition-transform`}
           >
-            <span className="text-3xl">{item.emoji}</span>
+            <span className="absolute -right-4 -top-4 w-14 h-14 rounded-full bg-white/10" />
+            <span className="text-3xl drop-shadow-sm">{item.emoji}</span>
             <span className="text-lg font-semibold">
               <span className="lang-en block">{item.label_en}</span>
               <span className="lang-hi block">{item.label_hi}</span>
@@ -113,7 +125,7 @@ export default function ProfilePage() {
         ))}
       </div>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-4 space-y-4">
+      <div className="bg-white rounded-2xl border border-black/10 p-4 mb-4 space-y-4 shadow-sm">
         <label className="block">
           <span className="font-semibold lang-en">Name (optional)</span>
           <span className="font-semibold lang-hi">नाम (वैकल्पिक)</span>
@@ -210,7 +222,7 @@ export default function ProfilePage() {
 
         <button
           onClick={handleSave}
-          className="w-full bg-primary text-white font-semibold py-3 rounded-lg text-lg"
+          className="w-full bg-gradient-to-r from-clay to-marigold text-white font-semibold py-3 rounded-xl text-lg shadow-md active:scale-[0.98] transition-transform"
         >
           <span className="lang-en">{saved ? "Saved ✓" : "Save Profile"}</span>
           <span className="lang-hi">{saved ? "सेव हो गया ✓" : "प्रोफ़ाइल सेव करें"}</span>
@@ -219,7 +231,7 @@ export default function ProfilePage() {
 
       <HealthNumbersForm />
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-6">
+      <div className="bg-white rounded-2xl border border-black/10 p-4 mb-6 shadow-sm">
         <p className="text-lg font-semibold mb-1">
           📎 <span className="lang-en">Attach Report Files</span>
           <span className="lang-hi">रिपोर्ट फ़ाइलें जोड़ें</span>
@@ -279,7 +291,7 @@ export default function ProfilePage() {
         <TestSuggestions profile={profile} />
       </div>
 
-      <div className="bg-white rounded-xl border border-black/10 p-4">
+      <div className="bg-white rounded-2xl border border-black/10 p-4 shadow-sm">
         <p className="text-lg font-semibold mb-3">
           ⚙️ <span className="lang-en">Settings</span>
           <span className="lang-hi">सेटिंग्स</span>

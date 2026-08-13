@@ -7,14 +7,30 @@ html {
 }
 
 body {
-  /* Stark, clean background per redesign: minimal, high-contrast, easy to
-     read for older users. No gradients. */
-  background: #FAFAFA;
+  /* Warm, soft backdrop instead of flat gray — still light and easy to
+     read, just less clinical. High-contrast mode below flattens this back
+     to plain white for anyone who needs maximum readability. */
+  background: radial-gradient(circle at 50% 0%, #FDF6EC 0%, #FAF7F1 45%, #FAFAFA 100%);
+  background-attachment: fixed;
   color: #2E2A26;
   min-height: 100vh;
   /* Leaves room above the fixed bottom nav bar so content never hides
      behind it. */
   padding-bottom: 5rem;
+}
+
+/* Hindi text renders noticeably better in a Devanagari-tuned face. */
+.lang-hi {
+  font-family: var(--font-dev), sans-serif;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
 }
 
 /* Accessibility: text size, applied on <html> so rem-based Tailwind sizes
@@ -38,10 +54,18 @@ html.high-contrast .text-ink\/40 {
   color: #1A1714;
 }
 html.high-contrast body {
-  background-color: #FFFFFF;
+  background: #FFFFFF;
 }
 html.high-contrast .bg-cream {
   background-color: #FFFFFF;
+}
+/* Colorful gradient banners/tiles still need to read clearly at max
+   contrast, so they collapse to one solid, high-contrast color+text
+   combination instead of a gradient. Every hero/tile carries data-hero. */
+html.high-contrast [data-hero] {
+  background-image: none !important;
+  background-color: #1A1714 !important;
+  color: #FFFFFF !important;
 }
 
 /* Language toggle: show only the selected language. Defaults to showing

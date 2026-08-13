@@ -52,22 +52,54 @@ change in how you walk.**
 
 ## Privacy and trust
 
-- Nothing you type or upload is sent to any server. There is no login and
-  no account.
-- Profile details (name, height, weight, age, notes) are saved in your
-  browser's local storage, only on the device you're using.
-- Uploaded report files (photos or PDFs) are saved in your browser's
-  IndexedDB storage, only on that device. The app never opens, reads, or
-  analyzes these files; they're for your own reference, the same as a
-  folder on your phone.
+- There is still no login or account. Each browser is identified only by
+  a random, anonymous ID (no name attached) stored in that browser.
+- What you type — profile details, health numbers, daily check-ins
+  (pain/exercise), and food log entries — is saved to this device first,
+  and also synced to a private database (Supabase) so the app owner can
+  see how the app is being used and, if you've shared your name, follow
+  up with you. It is not publicly visible and is not sold or shared with
+  anyone else.
+- Uploaded report files (photos or PDFs) stay on your device only, saved
+  in your browser's IndexedDB storage. They are never uploaded anywhere,
+  and the app never opens, reads, or analyzes them; they're for your own
+  reference, the same as a folder on your phone.
 - Health numbers (vitamin D, calcium, bone density, hemoglobin) shown on
   the dashboard are only ever what you typed in yourself. The app never
   extracts numbers from an uploaded file.
 - Doctor search links point to Google Maps, Google Search, and Practo.
   Always confirm a doctor's qualifications, experience, and reviews
   yourself before booking an appointment.
-- If you use this on two different devices, your data won't sync between
-  them, since nothing leaves the device it was entered on.
+- Because there's still no login, your data won't follow you to a
+  different device or browser — a new device gets a new anonymous ID and
+  starts fresh, the same as before.
+
+## Cloud sync setup (Supabase)
+
+Text you enter (profile, health numbers, check-ins, food log) can be
+mirrored to a Supabase project so you, the app owner, can see it. This is
+optional — if the two environment variables below aren't set, the app
+runs exactly as before, saving only on-device.
+
+1. Create a free project at [supabase.com](https://supabase.com).
+2. In the Supabase dashboard, open **SQL Editor → New query**, paste the
+   contents of `supabase/schema.sql` from this repo, and run it. This
+   creates the tables and locks them down so the public key used in the
+   browser can only write new entries, never read other people's data
+   back out.
+3. In **Project Settings → API**, copy the **Project URL** and the
+   **`anon` public key**.
+4. Set two environment variables:
+   - Locally: create `.env.local` with
+     ```
+     NEXT_PUBLIC_SUPABASE_URL=your-project-url
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+     ```
+   - On Vercel: **Project Settings → Environment Variables**, add the
+     same two names/values, then redeploy.
+5. To see the data, use the Supabase dashboard's **Table Editor** (signed
+   in as yourself — this bypasses the read restriction placed on the
+   public anon key).
 
 ## Deploy it fast (GitHub connected to Vercel)
 

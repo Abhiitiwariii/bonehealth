@@ -151,6 +151,7 @@ export default function TodayPage() {
             return (
               <button
                 key={item.key}
+                data-hero
                 onClick={openExercisePanel}
                 className={cardClass}
               >
@@ -159,7 +160,7 @@ export default function TodayPage() {
             );
           }
           return (
-            <Link key={item.key} href={item.href} className={cardClass}>
+            <Link key={item.key} data-hero href={item.href} className={cardClass}>
               {content}
             </Link>
           );
@@ -287,8 +288,8 @@ export default function TodayPage() {
 
       <HealthNumbersSummary />
 
-      <div className="bg-white border border-black/10 rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-xs uppercase tracking-wide text-ink/50 mb-1">
+      <div className="bg-gradient-to-br from-amber-50 to-yellow-50 border border-amber-200 rounded-2xl p-4 mb-6 shadow-sm">
+        <p className="text-xs uppercase tracking-wide text-amber-700/70 mb-1 font-semibold">
           🪷 <span className="lang-en">Today's Krishna Quote</span>
           <span className="lang-hi">आज का श्री कृष्ण वचन</span>
         </p>

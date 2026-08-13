@@ -18,6 +18,7 @@ import {
   questionsToAsk_en,
   questionsToAsk_hi,
 } from "../../lib/kneeAwareness";
+import PageHero from "../components/PageHero";
 
 export default function DoctorsPage() {
   const [city, setCity] = useState("");
@@ -48,22 +49,17 @@ export default function DoctorsPage() {
 
   return (
     <div>
-      <div className="bg-white rounded-xl p-4 mb-6 shadow-sm">
-        <p className="text-lg font-semibold">
-          📍 <span className="lang-en">Find a Specialist Near You</span>
-          <span className="lang-hi">अपने पास विशेषज्ञ खोजें</span>
-        </p>
-        <p className="text-sm mt-2 text-ink/70 lang-en">
-          Builds a live search for orthopedic knee specialists near you,
-          rather than keeping a fixed list.
-        </p>
-        <p className="text-sm mt-2 text-ink/70 lang-hi">
-          आपके पास आर्थोपेडिक घुटना विशेषज्ञों की जीवंत खोज बनाता है, कोई
-          स्थिर सूची नहीं रखता।
-        </p>
-      </div>
+      <PageHero
+        emoji="📍"
+        title_en="Find a Specialist Near You"
+        title_hi="अपने पास विशेषज्ञ खोजें"
+        subtitle_en="Builds a live search for orthopedic knee specialists near you, rather than keeping a fixed list."
+        subtitle_hi="आपके पास आर्थोपेडिक घुटना विशेषज्ञों की जीवंत खोज बनाता है, कोई स्थिर सूची नहीं रखता।"
+        from="from-pink-400"
+        to="to-rose-600"
+      />
 
-      <div className="bg-white rounded-xl border border-black/10 p-4 mb-6">
+      <div className="bg-white rounded-xl border border-black/10 p-4 mb-6 shadow-sm">
         <label className="block mb-3">
           <span className="font-semibold lang-en">City or area</span>
           <span className="font-semibold lang-hi">शहर या इलाका</span>
@@ -82,7 +78,7 @@ export default function DoctorsPage() {
               href={mapsSearchByCity(city.trim())}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm bg-clay text-white rounded-lg px-3 py-2"
+              className="text-sm bg-gradient-to-r from-rose-500 to-pink-600 text-white font-medium rounded-lg px-3 py-2 shadow-sm active:scale-[0.97] transition-transform"
             >
               📍 <span className="lang-en">Google Maps</span>
               <span className="lang-hi">मैप्स</span>
@@ -91,7 +87,7 @@ export default function DoctorsPage() {
               href={webSearchByCity(city.trim())}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm bg-sage/10 text-sage border border-sage/30 rounded-lg px-3 py-2"
+              className="text-sm bg-sage/10 text-sage border border-sage/30 rounded-lg px-3 py-2 active:scale-[0.97] transition-transform"
             >
               🔎 <span className="lang-en">Web Search</span>
               <span className="lang-hi">वेब खोज</span>
@@ -100,7 +96,7 @@ export default function DoctorsPage() {
               href={practoSearchByCity(city.trim())}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm bg-sage/10 text-sage border border-sage/30 rounded-lg px-3 py-2"
+              className="text-sm bg-sage/10 text-sage border border-sage/30 rounded-lg px-3 py-2 active:scale-[0.97] transition-transform"
             >
               🩺 Practo
             </a>
@@ -124,7 +120,7 @@ export default function DoctorsPage() {
                 href={mapsSearchByCoords(coords.lat, coords.lng)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm bg-clay text-white rounded-lg px-3 py-2 inline-block"
+                className="text-sm bg-gradient-to-r from-rose-500 to-pink-600 text-white font-medium rounded-lg px-3 py-2 inline-block shadow-sm active:scale-[0.97] transition-transform"
               >
                 📍 <span className="lang-en">Specialists Near Me</span>
                 <span className="lang-hi">मेरे पास विशेषज्ञ</span>
@@ -143,8 +139,8 @@ export default function DoctorsPage() {
         </p>
       </div>
 
-      <div className="bg-clay/10 border border-clay/30 rounded-xl p-4 mb-6">
-        <p className="text-lg font-semibold text-clay">
+      <div className="bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-200 rounded-2xl p-4 mb-6 shadow-sm">
+        <p className="text-lg font-semibold text-rose-700">
           🦵 <span className="lang-en">Understanding Knee Replacement</span>
           <span className="lang-hi">घुटना प्रतिस्थापन को समझना</span>
         </p>
@@ -158,7 +154,7 @@ export default function DoctorsPage() {
         </p>
       </div>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <summary className="font-semibold text-lg cursor-pointer">
           ❓ <span className="lang-en">What it is</span>
           <span className="lang-hi">यह क्या है</span>
@@ -169,7 +165,7 @@ export default function DoctorsPage() {
         </div>
       </details>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <summary className="font-semibold text-lg cursor-pointer">
           ⚠️ <span className="lang-en">When it's usually recommended</span>
           <span className="lang-hi">कब सलाह दी जाती है</span>
@@ -185,7 +181,7 @@ export default function DoctorsPage() {
         </ul>
       </details>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <summary className="font-semibold text-lg cursor-pointer">
           🩹 <span className="lang-en">Non-surgical options tried first</span>
           <span className="lang-hi">पहले आज़माए जाने वाले विकल्प</span>
@@ -202,7 +198,7 @@ export default function DoctorsPage() {
         </ul>
       </details>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <summary className="font-semibold text-lg cursor-pointer">
           ⚖️ <span className="lang-en">Benefits and risks</span>
           <span className="lang-hi">फायदे और जोखिम</span>
@@ -237,7 +233,7 @@ export default function DoctorsPage() {
         </div>
       </details>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <summary className="font-semibold text-lg cursor-pointer">
           📅 <span className="lang-en">Recovery timeline</span>
           <span className="lang-hi">रिकवरी की समयरेखा</span>
@@ -256,7 +252,7 @@ export default function DoctorsPage() {
         </ul>
       </details>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <summary className="font-semibold text-lg cursor-pointer">
           💬 <span className="lang-en">Common fears, answered honestly</span>
           <span className="lang-hi">आम डर, ईमानदार जवाब</span>
@@ -273,7 +269,7 @@ export default function DoctorsPage() {
         </ul>
       </details>
 
-      <details className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
         <summary className="font-semibold text-lg cursor-pointer">
           🗣️ <span className="lang-en">Questions worth asking your doctor</span>
           <span className="lang-hi">डॉक्टर से पूछने लायक सवाल</span>

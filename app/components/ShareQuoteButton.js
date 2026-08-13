@@ -13,7 +13,7 @@ export default function ShareQuoteButton({ quote }) {
       href={shareUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-3 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white text-sm font-medium rounded-lg px-3 py-2"
+      className="mt-3 inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white text-sm font-medium rounded-lg px-3 py-2 shadow-sm active:scale-[0.97] transition-transform"
     >
       📤 <span className="lang-en">Share on WhatsApp</span>
       <span className="lang-hi">व्हाट्सएप पर भेजें</span>

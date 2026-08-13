@@ -26,7 +26,7 @@ export default function HealthNumbersForm() {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-black/10 p-4 mb-4">
+    <div className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
       <p className="text-lg font-semibold mb-1">
         🔢 <span className="lang-en">Your Report Numbers (optional)</span>
         <span className="lang-hi">आपकी रिपोर्ट के आंकड़े (वैकल्पिक)</span>
@@ -100,7 +100,7 @@ export default function HealthNumbersForm() {
 
       <button
         onClick={handleSave}
-        className="mt-4 w-full bg-clay text-white font-semibold py-3 rounded-lg text-lg"
+        className="mt-4 w-full bg-gradient-to-r from-clay to-marigold text-white font-semibold py-3 rounded-xl text-lg shadow-md active:scale-[0.98] transition-transform"
       >
         <span className="lang-en">{saved ? "Saved ✓" : "Save Numbers"}</span>
         <span className="lang-hi">{saved ? "सेव हो गया ✓" : "आंकड़े सेव करें"}</span>

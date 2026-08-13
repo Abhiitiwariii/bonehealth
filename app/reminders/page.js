@@ -43,7 +43,7 @@ export default function RemindersPage() {
 
   return (
     <div>
-      <div className="bg-gradient-to-br from-violet-500 to-indigo-600 rounded-3xl p-6 text-white shadow-lg shadow-black/10 overflow-hidden relative mb-4">
+      <div data-hero className="bg-gradient-to-br from-violet-500 to-indigo-600 rounded-3xl p-6 text-white shadow-lg shadow-black/10 overflow-hidden relative mb-4">
         <span className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
         <p className="text-5xl mb-2">🔔</p>
         <p className="text-xl font-bold">
@@ -79,7 +79,7 @@ export default function RemindersPage() {
         )}
       </div>
 
-      <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-4 mb-4">
+      <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-4 mb-4 hover:shadow-md transition-shadow">
         <div className="flex items-center justify-between mb-3">
           <p className="text-lg font-bold flex items-center gap-2">
             <span className="text-2xl">🦴</span>
@@ -116,7 +116,7 @@ export default function RemindersPage() {
         </label>
       </div>
 
-      <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-4 mb-4">
+      <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-4 mb-4 hover:shadow-md transition-shadow">
         <div className="flex items-center justify-between mb-3">
           <p className="text-lg font-bold flex items-center gap-2">
             <span className="text-2xl">💊</span>
@@ -159,7 +159,7 @@ export default function RemindersPage() {
 
       <button
         onClick={save}
-        className="w-full bg-primary text-white font-bold py-3 rounded-xl text-lg"
+        className="w-full bg-gradient-to-r from-violet-500 to-indigo-600 text-white font-bold py-3 rounded-xl text-lg shadow-md active:scale-[0.98] transition-transform"
       >
         <span className="lang-en">{saved ? "Saved ✓" : "Save Reminders"}</span>
         <span className="lang-hi">{saved ? "सेव हो गया ✓" : "रिमाइंडर सेव करें"}</span>

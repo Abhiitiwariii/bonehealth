@@ -39,8 +39,10 @@ export default function Nav() {
               }`}
             >
               <span
-                className={`text-2xl leading-none w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
-                  active ? "bg-orange-100" : ""
+                className={`text-2xl leading-none w-9 h-9 flex items-center justify-center rounded-full transition-all ${
+                  active
+                    ? "bg-gradient-to-br from-orange-100 to-amber-200 shadow-sm scale-105"
+                    : ""
                 }`}
               >
                 {link.icon}
