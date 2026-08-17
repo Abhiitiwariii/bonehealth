@@ -30,7 +30,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${devanagari.variable}`}>
       <body className="min-h-screen flex flex-col bg-surface font-sans">
-        <header className="relative overflow-hidden bg-gradient-to-br from-clay via-clay to-marigold px-4 py-6 shadow-md">
+        <header className="relative overflow-hidden bg-gradient-to-br from-clay via-clay to-marigold px-4 py-6 shadow-cardLift">
+          <span className="shine-sweep" aria-hidden="true" />
           <span className="absolute -right-8 -top-10 w-40 h-40 rounded-full bg-white/10" />
           <span className="absolute -left-10 -bottom-14 w-32 h-32 rounded-full bg-white/10" />
           <div className="relative max-w-2xl mx-auto pr-14 flex items-center gap-3">

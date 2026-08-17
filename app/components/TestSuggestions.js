@@ -1,7 +1,49 @@
 "use client";
 
+import { useState } from "react";
 import { orderedTestSuggestions } from "../../lib/testSuggestions";
 import ExerciseVideo from "./ExerciseVideo";
+
+function TestItem({ t }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border-t border-black/5 pt-3 first:border-0 first:pt-0">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between gap-2 text-left"
+      >
+        <span className="font-semibold text-clay">
+          <span className="lang-en">{t.title_en}</span>
+          <span className="lang-hi">{t.title_hi}</span>
+        </span>
+        <span
+          className={`shrink-0 text-clay transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        >
+          ▾
+        </span>
+      </button>
+      <div className={`accordion-track ${open ? "is-open" : ""}`}>
+        <div className="accordion-inner">
+          <div className="mt-2">
+            <p className="text-sm lang-en">{t.who_en}</p>
+            <p className="text-sm lang-hi">{t.who_hi}</p>
+            <p className="text-sm mt-2 text-ink/70 lang-en">{t.why_en}</p>
+            <p className="text-sm text-ink/50 lang-hi">{t.why_hi}</p>
+            <ExerciseVideo
+              videoId={t.videoId}
+              videoSource={t.videoSource}
+              videoSearch={t.videoSearch}
+            />
+            <p className="text-xs text-ink/40 mt-2">Source: {t.source}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function TestSuggestions({ profile }) {
   const tests = orderedTestSuggestions(profile);
@@ -23,24 +65,7 @@ export default function TestSuggestions({ profile }) {
 
       <div className="space-y-3">
         {tests.map((t) => (
-          <details key={t.id} className="border-t border-black/5 pt-3 first:border-0 first:pt-0">
-            <summary className="font-semibold text-clay cursor-pointer">
-              <span className="lang-en">{t.title_en}</span>
-              <span className="lang-hi">{t.title_hi}</span>
-            </summary>
-            <div className="mt-2">
-              <p className="text-sm lang-en">{t.who_en}</p>
-              <p className="text-sm lang-hi">{t.who_hi}</p>
-              <p className="text-sm mt-2 text-ink/70 lang-en">{t.why_en}</p>
-              <p className="text-sm text-ink/50 lang-hi">{t.why_hi}</p>
-              <ExerciseVideo
-                videoId={t.videoId}
-                videoSource={t.videoSource}
-                videoSearch={t.videoSearch}
-              />
-              <p className="text-xs text-ink/40 mt-2">Source: {t.source}</p>
-            </div>
-          </details>
+          <TestItem key={t.id} t={t} />
         ))}
       </div>
     </div>

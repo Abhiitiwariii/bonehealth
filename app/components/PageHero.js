@@ -18,8 +18,9 @@ export default function PageHero({
   return (
     <div
       data-hero
-      className={`animate-fade-in relative overflow-hidden bg-gradient-to-br ${from} ${to} rounded-3xl p-6 text-white shadow-lg shadow-black/10 mb-6`}
+      className={`animate-fade-in relative overflow-hidden bg-gradient-to-br ${from} ${to} rounded-3xl p-6 text-white shadow-cardLift mb-6`}
     >
+      <span className="shine-sweep" aria-hidden="true" />
       <span className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
       <span className="absolute -left-8 -bottom-10 w-28 h-28 rounded-full bg-white/5" />
       <div className="relative">

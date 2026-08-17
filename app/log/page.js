@@ -5,6 +5,7 @@ import { exercises } from "../../lib/exercises";
 import { painTips, whenToCallDoctor } from "../../lib/painCare";
 import { syncCheckin } from "../../lib/cloudSync";
 import PageHero from "../components/PageHero";
+import Collapsible from "../components/Collapsible";
 
 const HISTORY_KEY = "bone-history";
 
@@ -148,47 +149,45 @@ export default function LogPage() {
         </button>
       </div>
 
-      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
-        <summary className="text-lg font-semibold cursor-pointer">
-          🩹 <span className="lang-en">Comfort Tips</span>
-          <span className="lang-hi">आराम के उपाय</span>
-        </summary>
-        <p className="text-sm text-ink/60 mt-2 mb-3 lang-en">
-          Non-medicine ways to ease pain. Follow your doctor's instructions
-          for medicines.
-        </p>
-        <p className="text-sm text-ink/60 mt-2 mb-3 lang-hi">
-          दर्द कम करने के गैर-दवा उपाय। दवाओं के लिए डॉक्टर की सलाह मानें।
-        </p>
-        <ul className="space-y-3">
-          {painTips.map((tip) => (
-            <li key={tip.title_en} className="border-l-4 border-sage/40 pl-3">
-              <p className="font-semibold">
-                <span className="lang-en">{tip.title_en}</span>
-                <span className="lang-hi">{tip.title_hi}</span>
-              </p>
-              <p className="text-sm mt-0.5 lang-en">{tip.text_en}</p>
-              <p className="text-sm text-ink/50 lang-hi">{tip.text_hi}</p>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-4 bg-clay/10 border border-clay/30 rounded-lg p-3">
-          <p className="font-semibold text-clay mb-2">
-            📞 <span className="lang-en">Call your doctor if</span>
-            <span className="lang-hi">डॉक्टर को कॉल करें अगर</span>
+      <div className="mb-4">
+        <Collapsible icon="🩹" title_en="Comfort Tips" title_hi="आराम के उपाय">
+          <p className="text-sm text-ink/60 mt-2 mb-3 lang-en">
+            Non-medicine ways to ease pain. Follow your doctor's instructions
+            for medicines.
           </p>
-          <ul className="space-y-1 text-sm">
-            {whenToCallDoctor.map((w, i) => (
-              <li key={i}>
-                <span className="text-clay">●</span>{" "}
-                <span className="lang-en">{w.en}</span>
-                <span className="lang-hi">{w.hi}</span>
+          <p className="text-sm text-ink/60 mt-2 mb-3 lang-hi">
+            दर्द कम करने के गैर-दवा उपाय। दवाओं के लिए डॉक्टर की सलाह मानें।
+          </p>
+          <ul className="space-y-3">
+            {painTips.map((tip) => (
+              <li key={tip.title_en} className="border-l-4 border-sage/40 pl-3">
+                <p className="font-semibold">
+                  <span className="lang-en">{tip.title_en}</span>
+                  <span className="lang-hi">{tip.title_hi}</span>
+                </p>
+                <p className="text-sm mt-0.5 lang-en">{tip.text_en}</p>
+                <p className="text-sm text-ink/50 lang-hi">{tip.text_hi}</p>
               </li>
             ))}
           </ul>
-        </div>
-      </details>
+
+          <div className="mt-4 bg-clay/10 border border-clay/30 rounded-lg p-3">
+            <p className="font-semibold text-clay mb-2">
+              📞 <span className="lang-en">Call your doctor if</span>
+              <span className="lang-hi">डॉक्टर को कॉल करें अगर</span>
+            </p>
+            <ul className="space-y-1 text-sm">
+              {whenToCallDoctor.map((w, i) => (
+                <li key={i}>
+                  <span className="text-clay">●</span>{" "}
+                  <span className="lang-en">{w.en}</span>
+                  <span className="lang-hi">{w.hi}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Collapsible>
+      </div>
 
       <div className="bg-white rounded-2xl border border-black/10 p-4 shadow-sm">
         <p className="text-lg font-semibold mb-3">

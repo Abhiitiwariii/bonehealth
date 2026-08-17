@@ -19,6 +19,7 @@ import {
   questionsToAsk_hi,
 } from "../../lib/kneeAwareness";
 import PageHero from "../components/PageHero";
+import Collapsible from "../components/Collapsible";
 
 export default function DoctorsPage() {
   const [city, setCity] = useState("");
@@ -154,56 +155,46 @@ export default function DoctorsPage() {
         </p>
       </div>
 
-      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
-        <summary className="font-semibold text-lg cursor-pointer">
-          ❓ <span className="lang-en">What it is</span>
-          <span className="lang-hi">यह क्या है</span>
-        </summary>
-        <div className="mt-3">
+      <div className="space-y-4 mb-4">
+        <Collapsible icon="❓" title_en="What it is" title_hi="यह क्या है">
           <p className="text-sm lang-en">{whatIsIt.en}</p>
           <p className="text-sm lang-hi">{whatIsIt.hi}</p>
-        </div>
-      </details>
+        </Collapsible>
 
-      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
-        <summary className="font-semibold text-lg cursor-pointer">
-          ⚠️ <span className="lang-en">When it's usually recommended</span>
-          <span className="lang-hi">कब सलाह दी जाती है</span>
-        </summary>
-        <ul className="mt-3 space-y-1 text-sm">
-          {whenRecommended_en.map((t, i) => (
-            <li key={i}>
-              <span className="text-sage">●</span>{" "}
-              <span className="lang-en">{t}</span>
-              <span className="lang-hi">{whenRecommended_hi[i]}</span>
-            </li>
-          ))}
-        </ul>
-      </details>
+        <Collapsible
+          icon="⚠️"
+          title_en="When it's usually recommended"
+          title_hi="कब सलाह दी जाती है"
+        >
+          <ul className="space-y-1 text-sm">
+            {whenRecommended_en.map((t, i) => (
+              <li key={i}>
+                <span className="text-sage">●</span>{" "}
+                <span className="lang-en">{t}</span>
+                <span className="lang-hi">{whenRecommended_hi[i]}</span>
+              </li>
+            ))}
+          </ul>
+        </Collapsible>
 
-      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
-        <summary className="font-semibold text-lg cursor-pointer">
-          🩹 <span className="lang-en">Non-surgical options tried first</span>
-          <span className="lang-hi">पहले आज़माए जाने वाले विकल्प</span>
-        </summary>
-        <ul className="mt-3 space-y-2 text-sm">
-          {alternatives.map((a) => (
-            <li key={a.en}>
-              <span className="font-medium lang-en">{a.en}</span>
-              <span className="font-medium lang-hi">{a.hi}</span>
-              <p className="text-ink/60 lang-en">{a.note_en}</p>
-              <p className="text-ink/50 lang-hi">{a.note_hi}</p>
-            </li>
-          ))}
-        </ul>
-      </details>
+        <Collapsible
+          icon="🩹"
+          title_en="Non-surgical options tried first"
+          title_hi="पहले आज़माए जाने वाले विकल्प"
+        >
+          <ul className="space-y-2 text-sm">
+            {alternatives.map((a) => (
+              <li key={a.en}>
+                <span className="font-medium lang-en">{a.en}</span>
+                <span className="font-medium lang-hi">{a.hi}</span>
+                <p className="text-ink/60 lang-en">{a.note_en}</p>
+                <p className="text-ink/50 lang-hi">{a.note_hi}</p>
+              </li>
+            ))}
+          </ul>
+        </Collapsible>
 
-      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
-        <summary className="font-semibold text-lg cursor-pointer">
-          ⚖️ <span className="lang-en">Benefits and risks</span>
-          <span className="lang-hi">फायदे और जोखिम</span>
-        </summary>
-        <div className="mt-3">
+        <Collapsible icon="⚖️" title_en="Benefits and risks" title_hi="फायदे और जोखिम">
           <p className="font-semibold mb-2">
             <span className="lang-en">Benefits</span>
             <span className="lang-hi">फायदे</span>
@@ -230,59 +221,55 @@ export default function DoctorsPage() {
               </li>
             ))}
           </ul>
-        </div>
-      </details>
+        </Collapsible>
 
-      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
-        <summary className="font-semibold text-lg cursor-pointer">
-          📅 <span className="lang-en">Recovery timeline</span>
-          <span className="lang-hi">रिकवरी की समयरेखा</span>
-        </summary>
-        <ul className="mt-3 space-y-2 text-sm">
-          {recoveryTimeline.map((r) => (
-            <li key={r.period_en} className="border-l-4 border-sage/40 pl-3">
-              <p className="font-medium">
-                <span className="lang-en">{r.period_en}</span>
-                <span className="lang-hi">{r.period_hi}</span>
-              </p>
-              <p className="text-ink/60 lang-en">{r.detail_en}</p>
-              <p className="text-ink/50 lang-hi">{r.detail_hi}</p>
-            </li>
-          ))}
-        </ul>
-      </details>
+        <Collapsible icon="📅" title_en="Recovery timeline" title_hi="रिकवरी की समयरेखा">
+          <ul className="space-y-2 text-sm">
+            {recoveryTimeline.map((r) => (
+              <li key={r.period_en} className="border-l-4 border-sage/40 pl-3">
+                <p className="font-medium">
+                  <span className="lang-en">{r.period_en}</span>
+                  <span className="lang-hi">{r.period_hi}</span>
+                </p>
+                <p className="text-ink/60 lang-en">{r.detail_en}</p>
+                <p className="text-ink/50 lang-hi">{r.detail_hi}</p>
+              </li>
+            ))}
+          </ul>
+        </Collapsible>
 
-      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
-        <summary className="font-semibold text-lg cursor-pointer">
-          💬 <span className="lang-en">Common fears, answered honestly</span>
-          <span className="lang-hi">आम डर, ईमानदार जवाब</span>
-        </summary>
-        <ul className="mt-3 space-y-3 text-sm">
-          {commonFears.map((f) => (
-            <li key={f.fear_en}>
-              <p className="font-medium italic lang-en">{f.fear_en}</p>
-              <p className="italic lang-hi">{f.fear_hi}</p>
-              <p className="mt-1 lang-en">{f.response_en}</p>
-              <p className="text-ink/50 lang-hi">{f.response_hi}</p>
-            </li>
-          ))}
-        </ul>
-      </details>
+        <Collapsible
+          icon="💬"
+          title_en="Common fears, answered honestly"
+          title_hi="आम डर, ईमानदार जवाब"
+        >
+          <ul className="space-y-3 text-sm">
+            {commonFears.map((f) => (
+              <li key={f.fear_en}>
+                <p className="font-medium italic lang-en">{f.fear_en}</p>
+                <p className="italic lang-hi">{f.fear_hi}</p>
+                <p className="mt-1 lang-en">{f.response_en}</p>
+                <p className="text-ink/50 lang-hi">{f.response_hi}</p>
+              </li>
+            ))}
+          </ul>
+        </Collapsible>
 
-      <details className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
-        <summary className="font-semibold text-lg cursor-pointer">
-          🗣️ <span className="lang-en">Questions worth asking your doctor</span>
-          <span className="lang-hi">डॉक्टर से पूछने लायक सवाल</span>
-        </summary>
-        <ol className="mt-3 list-decimal list-inside space-y-1 text-sm">
-          {questionsToAsk_en.map((q, i) => (
-            <li key={i}>
-              <span className="lang-en">{q}</span>
-              <span className="lang-hi list-none">{questionsToAsk_hi[i]}</span>
-            </li>
-          ))}
-        </ol>
-      </details>
+        <Collapsible
+          icon="🗣️"
+          title_en="Questions worth asking your doctor"
+          title_hi="डॉक्टर से पूछने लायक सवाल"
+        >
+          <ol className="list-decimal list-inside space-y-1 text-sm">
+            {questionsToAsk_en.map((q, i) => (
+              <li key={i}>
+                <span className="lang-en">{q}</span>
+                <span className="lang-hi list-none">{questionsToAsk_hi[i]}</span>
+              </li>
+            ))}
+          </ol>
+        </Collapsible>
+      </div>
 
       <p className="text-center text-xs text-ink/40 mt-4 lang-en">
         General education, not a diagnosis or a push either way. The

@@ -40,8 +40,9 @@ export default function RecordsPage() {
             key={c.href}
             href={c.href}
             data-hero
-            className={`relative overflow-hidden flex items-center gap-4 bg-gradient-to-br ${c.from} ${c.to} text-white rounded-2xl p-4 shadow-md active:scale-[0.98] transition-transform`}
+            className={`relative overflow-hidden flex items-center gap-4 bg-gradient-to-br ${c.from} ${c.to} text-white rounded-2xl p-4 shadow-cardLift active:scale-[0.98] transition-transform`}
           >
+            <span className="shine-sweep" aria-hidden="true" />
             <span className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
             <span className="text-4xl drop-shadow-sm shrink-0">{c.emoji}</span>
             <div className="relative flex-1">

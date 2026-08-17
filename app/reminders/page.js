@@ -43,7 +43,8 @@ export default function RemindersPage() {
 
   return (
     <div>
-      <div data-hero className="bg-gradient-to-br from-violet-500 to-indigo-600 rounded-3xl p-6 text-white shadow-lg shadow-black/10 overflow-hidden relative mb-4">
+      <div data-hero className="bg-gradient-to-br from-violet-500 to-indigo-600 rounded-3xl p-6 text-white shadow-cardLift overflow-hidden relative mb-4">
+        <span className="shine-sweep" aria-hidden="true" />
         <span className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
         <p className="text-5xl mb-2">🔔</p>
         <p className="text-xl font-bold">

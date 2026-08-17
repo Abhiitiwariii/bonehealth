@@ -47,7 +47,7 @@ export default function BhaktiPage() {
         {bhajanGroups.map((group, i) => (
           <div
             key={group.mood_en}
-            className="bg-white rounded-2xl border border-black/10 p-4 shadow-sm"
+            className="bg-white rounded-2xl border border-black/10 p-4 shadow-sm hover:shadow-cardLift transition-shadow"
           >
             <p className={`text-lg font-semibold ${moodAccents[i % moodAccents.length]}`}>
               <span className="lang-en">{group.mood_en}</span>

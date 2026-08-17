@@ -8,6 +8,7 @@ export default function DietLogForm() {
   const [foodText, setFoodText] = useState("");
   const [history, setHistory] = useState([]);
   const [saved, setSaved] = useState(false);
+  const [historyOpen, setHistoryOpen] = useState(false);
 
   useEffect(() => {
     const key = todayKey();
@@ -57,25 +58,39 @@ export default function DietLogForm() {
       </button>
 
       {history.length > 0 && (
-        <details className="mt-4">
-          <summary className="text-sm font-semibold cursor-pointer">
+        <div className="mt-4 border-t border-black/5 pt-3">
+          <button
+            type="button"
+            onClick={() => setHistoryOpen((v) => !v)}
+            className="flex items-center gap-1 text-sm font-semibold text-ink"
+          >
             <span className="lang-en">Past entries</span>
             <span className="lang-hi">पिछली प्रविष्टियां</span>
-          </summary>
-          <ul className="mt-2 space-y-2 text-sm">
-            {history.map((h) => (
-              <li
-                key={h.date}
-                className="border-t border-black/5 pt-2 first:border-0 first:pt-0"
-              >
-                <span className="font-semibold">{h.date}</span>
-                {h.foodText && (
-                  <p className="text-ink/70 mt-0.5">{h.foodText}</p>
-                )}
-              </li>
-            ))}
-          </ul>
-        </details>
+            <span
+              className={`inline-block transition-transform duration-300 ${historyOpen ? "rotate-180" : ""}`}
+              aria-hidden="true"
+            >
+              ▾
+            </span>
+          </button>
+          <div className={`accordion-track ${historyOpen ? "is-open" : ""}`}>
+            <div className="accordion-inner">
+              <ul className="mt-2 space-y-2 text-sm">
+                {history.map((h) => (
+                  <li
+                    key={h.date}
+                    className="border-t border-black/5 pt-2 first:border-0 first:pt-0"
+                  >
+                    <span className="font-semibold">{h.date}</span>
+                    {h.foodText && (
+                      <p className="text-ink/70 mt-0.5">{h.foodText}</p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

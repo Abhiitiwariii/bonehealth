@@ -26,7 +26,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-black/10 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur border-t border-black/10 shadow-[0_-2px_16px_rgba(0,0,0,0.08)]">
       <div className="max-w-2xl mx-auto grid grid-cols-4">
         {links.map((link) => {
           const active = isActive(pathname, link.href);
@@ -34,18 +34,21 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex flex-col items-center justify-center gap-0.5 py-2.5 text-sm font-semibold transition-colors ${
+              className={`relative flex flex-col items-center justify-center gap-0.5 py-2.5 text-sm font-semibold transition-colors ${
                 active ? "text-orange-600" : "text-ink/40"
               }`}
             >
+              {active && (
+                <span className="absolute top-0 w-8 h-1 rounded-full bg-gradient-to-r from-orange-400 to-amber-500" />
+              )}
               <span
-                className={`text-2xl leading-none w-9 h-9 flex items-center justify-center rounded-full transition-all ${
+                className={`text-2xl leading-none w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 ${
                   active
-                    ? "bg-gradient-to-br from-orange-100 to-amber-200 shadow-sm scale-105"
+                    ? "bg-gradient-to-br from-orange-400 to-amber-500 shadow-goldGlow scale-110"
                     : ""
                 }`}
               >
-                {link.icon}
+                {active ? <span className="drop-shadow-sm">{link.icon}</span> : link.icon}
               </span>
               <span className="lang-en">{link.label}</span>
               <span className="lang-hi">{link.hindi}</span>

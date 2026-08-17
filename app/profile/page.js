@@ -113,8 +113,9 @@ export default function ProfilePage() {
             key={item.href}
             data-hero
             href={item.href}
-            className={`relative overflow-hidden flex items-center gap-3 bg-gradient-to-br ${item.from} ${item.to} text-white rounded-2xl p-4 shadow-md active:scale-[0.97] transition-transform`}
+            className={`relative overflow-hidden flex items-center gap-3 bg-gradient-to-br ${item.from} ${item.to} text-white rounded-2xl p-4 shadow-cardLift active:scale-[0.97] transition-transform`}
           >
+            <span className="shine-sweep" aria-hidden="true" />
             <span className="absolute -right-4 -top-4 w-14 h-14 rounded-full bg-white/10" />
             <span className="text-3xl drop-shadow-sm">{item.emoji}</span>
             <span className="text-lg font-semibold">
