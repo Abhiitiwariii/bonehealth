@@ -48,7 +48,7 @@ export default function Collapsible({
 
   return (
     <div
-      className={`bg-white rounded-2xl border border-black/10 shadow-sm overflow-hidden transition-shadow ${
+      className={`bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-shadow ${
         open ? "shadow-cardLift" : ""
       } ${className}`}
     >
@@ -64,7 +64,7 @@ export default function Collapsible({
         >
           <div className="flex items-center gap-3 min-w-0">
             {icon && (
-              <span className="w-10 h-10 rounded-full bg-clay/10 flex items-center justify-center text-xl shrink-0">
+              <span className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-xl shrink-0">
                 {icon}
               </span>
             )}
@@ -74,7 +74,7 @@ export default function Collapsible({
                 <span className="lang-hi">{title_hi}</span>
               </p>
               {(subtitle_en || subtitle_hi) && (
-                <p className="text-sm text-ink/60 truncate">
+                <p className="text-sm text-slate-500 truncate">
                   <span className="lang-en">{subtitle_en}</span>
                   <span className="lang-hi">{subtitle_hi}</span>
                 </p>
@@ -83,12 +83,12 @@ export default function Collapsible({
           </div>
           <div className="flex items-center gap-2 shrink-0">
             {badge != null && (
-              <span className="text-sm font-bold text-clay bg-clay/10 rounded-full px-2.5 py-1">
+              <span className="text-sm font-bold text-amber-700 bg-amber-50 rounded-full px-2.5 py-1">
                 {badge}
               </span>
             )}
             <span
-              className={`inline-flex w-7 h-7 items-center justify-center rounded-full bg-black/5 text-ink/60 transition-transform duration-300 ${
+              className={`inline-flex w-7 h-7 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-transform duration-300 ${
                 open ? "rotate-180" : ""
               }`}
               aria-hidden="true"

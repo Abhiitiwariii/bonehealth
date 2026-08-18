@@ -43,15 +43,13 @@ export default function RemindersPage() {
 
   return (
     <div>
-      <div data-hero className="bg-gradient-to-br from-violet-500 to-indigo-600 rounded-3xl p-6 text-white shadow-cardLift overflow-hidden relative mb-4">
-        <span className="shine-sweep" aria-hidden="true" />
-        <span className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
-        <p className="text-5xl mb-2">🔔</p>
-        <p className="text-xl font-bold">
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 mb-4">
+        <span className="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mb-3">🔔</span>
+        <p className="text-xl font-bold text-slate-800">
           <span className="lang-en">Your Reminders</span>
           <span className="lang-hi">आपके रिमाइंडर</span>
         </p>
-        <p className="text-sm text-white/80 mt-2">
+        <p className="text-sm text-slate-500 mt-2">
           <span className="lang-en">
             Alerts only work while this app is open in your browser — this
             device can't get push notifications when the app or browser is
@@ -66,21 +64,21 @@ export default function RemindersPage() {
         {permission !== "granted" && (
           <button
             onClick={requestPermission}
-            className="mt-4 bg-white/20 hover:bg-white/30 rounded-full px-4 py-2 text-sm font-semibold"
+            className="mt-4 bg-amber-500 text-white rounded-full px-4 py-2 text-sm font-semibold active:scale-95 transition-transform"
           >
             🔔 <span className="lang-en">Enable browser alerts</span>
             <span className="lang-hi">ब्राउज़र अलर्ट चालू करें</span>
           </button>
         )}
         {permission === "granted" && (
-          <p className="mt-4 text-sm bg-white/15 inline-block rounded-full px-4 py-2 font-semibold">
+          <p className="mt-4 text-sm bg-amber-50 text-amber-700 border border-amber-200 inline-block rounded-full px-4 py-2 font-semibold">
             ✅ <span className="lang-en">Browser alerts enabled</span>
             <span className="lang-hi">ब्राउज़र अलर्ट चालू है</span>
           </p>
         )}
       </div>
 
-      <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-4 mb-4 hover:shadow-md transition-shadow">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 mb-4 hover:shadow-md transition-shadow">
         <div className="flex items-center justify-between mb-3">
           <p className="text-lg font-bold flex items-center gap-2">
             <span className="text-2xl">🦴</span>
@@ -92,7 +90,7 @@ export default function RemindersPage() {
           <button
             onClick={() => update({ exerciseEnabled: !settings.exerciseEnabled })}
             className={`w-14 h-8 rounded-full transition-colors relative shrink-0 ${
-              settings.exerciseEnabled ? "bg-orange-500" : "bg-black/15"
+              settings.exerciseEnabled ? "bg-amber-500" : "bg-slate-300"
             }`}
           >
             <span
@@ -103,7 +101,7 @@ export default function RemindersPage() {
           </button>
         </div>
         <label className="block">
-          <span className="text-sm text-ink/60 mb-1 block">
+          <span className="text-sm text-slate-500 mb-1 block">
             <span className="lang-en">Nudge me at</span>
             <span className="lang-hi">मुझे याद दिलाएं</span>
           </span>
@@ -112,12 +110,12 @@ export default function RemindersPage() {
             value={settings.exerciseTime}
             onChange={(e) => update({ exerciseTime: e.target.value })}
             disabled={!settings.exerciseEnabled}
-            className="border border-black/15 rounded-lg p-2 text-base disabled:opacity-40"
+            className="border border-slate-200 rounded-lg p-2 text-base disabled:opacity-40"
           />
         </label>
       </div>
 
-      <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-4 mb-4 hover:shadow-md transition-shadow">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 mb-4 hover:shadow-md transition-shadow">
         <div className="flex items-center justify-between mb-3">
           <p className="text-lg font-bold flex items-center gap-2">
             <span className="text-2xl">💊</span>
@@ -129,7 +127,7 @@ export default function RemindersPage() {
           <button
             onClick={() => update({ medicineEnabled: !settings.medicineEnabled })}
             className={`w-14 h-8 rounded-full transition-colors relative shrink-0 ${
-              settings.medicineEnabled ? "bg-orange-500" : "bg-black/15"
+              settings.medicineEnabled ? "bg-amber-500" : "bg-slate-300"
             }`}
           >
             <span
@@ -142,7 +140,7 @@ export default function RemindersPage() {
         <div className="grid grid-cols-2 gap-3">
           {settings.medicineTimes.map((time, i) => (
             <label key={i} className="block">
-              <span className="text-sm text-ink/60 mb-1 block">
+              <span className="text-sm text-slate-500 mb-1 block">
                 <span className="lang-en">{i === 0 ? "Morning" : "Evening"}</span>
                 <span className="lang-hi">{i === 0 ? "सुबह" : "शाम"}</span>
               </span>
@@ -151,7 +149,7 @@ export default function RemindersPage() {
                 value={time}
                 onChange={(e) => updateMedicineTime(i, e.target.value)}
                 disabled={!settings.medicineEnabled}
-                className="w-full border border-black/15 rounded-lg p-2 text-base disabled:opacity-40"
+                className="w-full border border-slate-200 rounded-lg p-2 text-base disabled:opacity-40"
               />
             </label>
           ))}
@@ -160,13 +158,13 @@ export default function RemindersPage() {
 
       <button
         onClick={save}
-        className="w-full bg-gradient-to-r from-violet-500 to-indigo-600 text-white font-bold py-3 rounded-xl text-lg shadow-md active:scale-[0.98] transition-transform"
+        className="w-full bg-amber-500 text-white font-bold py-3 rounded-xl text-lg shadow-md active:scale-[0.98] transition-transform"
       >
         <span className="lang-en">{saved ? "Saved ✓" : "Save Reminders"}</span>
         <span className="lang-hi">{saved ? "सेव हो गया ✓" : "रिमाइंडर सेव करें"}</span>
       </button>
 
-      <p className="text-center text-sm text-ink/60 mt-6">
+      <p className="text-center text-sm text-slate-500 mt-6">
         <span className="lang-en">
           Keep the app open (or in a background tab) around your reminder
           time so the alert can appear.

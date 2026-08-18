@@ -8,7 +8,7 @@
 
 import { useEffect, useMemo } from "react";
 
-const PALETTE = ["#C1543A", "#E8A33D", "#5F8161", "#8A3A3A", "#F59E0B"];
+const PALETTE = ["#E8912D", "#F59E0B", "#FBBF24", "#FCD34D", "#94A3B8"];
 
 export default function Celebration({
   show,
@@ -59,14 +59,14 @@ export default function Celebration({
       </div>
 
       <div className="mt-24 animate-float-up pointer-events-auto">
-        <div className="flex items-center gap-3 bg-white rounded-2xl shadow-2xl border border-black/10 px-5 py-4 max-w-xs mx-4">
+        <div className="flex items-center gap-3 bg-white rounded-2xl shadow-2xl border border-slate-200 px-5 py-4 max-w-xs mx-4">
           <span className="text-3xl">🎉</span>
           <div>
-            <p className="font-bold text-ink leading-snug">
+            <p className="font-bold text-slate-800 leading-snug">
               <span className="lang-en">{message_en}</span>
               <span className="lang-hi">{message_hi}</span>
             </p>
-            <p className="text-sm text-ink/60 mt-0.5">
+            <p className="text-sm text-slate-500 mt-0.5">
               <span className="lang-en">Great habit-building today.</span>
               <span className="lang-hi">आज की बहुत अच्छी आदत।</span>
             </p>

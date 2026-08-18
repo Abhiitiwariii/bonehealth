@@ -30,7 +30,7 @@ export default function LanguageToggle() {
     <button
       onClick={toggle}
       aria-label={lang === "hi" ? "Switch to English" : "हिंदी में बदलें"}
-      className="fixed top-3 right-3 z-30 w-11 h-11 rounded-full bg-white border-2 border-black/10 shadow-sm flex items-center justify-center text-lg font-bold text-ink"
+      className="fixed top-3 right-3 z-30 w-11 h-11 rounded-full bg-white border-2 border-slate-200 shadow-sm flex items-center justify-center text-lg font-bold text-slate-800"
     >
       {lang === "hi" ? "अ" : "A"}
     </button>

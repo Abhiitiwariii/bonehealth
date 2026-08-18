@@ -30,7 +30,7 @@ const cards = [
 export default function RecordsPage() {
   return (
     <div>
-      <p className="text-lg font-display font-bold mb-4">
+      <p className="text-lg font-display font-bold mb-4 text-slate-800">
         <span className="lang-en">Your Records</span>
         <span className="lang-hi">आपके रिकॉर्ड</span>
       </p>
@@ -39,23 +39,20 @@ export default function RecordsPage() {
           <Link
             key={c.href}
             href={c.href}
-            data-hero
-            className={`relative overflow-hidden flex items-center gap-4 bg-gradient-to-br ${c.from} ${c.to} text-white rounded-2xl p-4 shadow-cardLift active:scale-[0.98] transition-transform`}
+            className="flex items-center gap-4 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm active:scale-[0.98] transition-transform"
           >
-            <span className="shine-sweep" aria-hidden="true" />
-            <span className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
-            <span className="text-4xl drop-shadow-sm shrink-0">{c.emoji}</span>
-            <div className="relative flex-1">
-              <p className="text-lg font-semibold">
+            <span className="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl shrink-0">{c.emoji}</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-lg font-semibold text-slate-800">
                 <span className="lang-en">{c.title_en}</span>
                 <span className="lang-hi">{c.title_hi}</span>
               </p>
-              <p className="text-sm text-white/85 mt-0.5">
+              <p className="text-sm text-slate-500 mt-0.5">
                 <span className="lang-en">{c.desc_en}</span>
                 <span className="lang-hi">{c.desc_hi}</span>
               </p>
             </div>
-            <span className="relative text-2xl text-white/70">›</span>
+            <span className="text-2xl text-slate-300">›</span>
           </Link>
         ))}
       </div>

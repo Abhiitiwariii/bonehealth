@@ -15,22 +15,22 @@ export default function ProfileCard() {
 
   if (!hasProfile(profile)) {
     return (
-      <div className="bg-white rounded-2xl border border-black/10 p-4 mb-6 shadow-sm">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-6 shadow-sm">
         <p className="text-lg font-semibold">
           <span className="lang-en">Add Your Details</span>
           <span className="lang-hi">अपनी जानकारी जोड़ें</span>
         </p>
-        <p className="text-sm text-ink/70 mt-1 lang-en">
+        <p className="text-sm text-slate-500 mt-1 lang-en">
           Fill in your height and weight on the Profile tab for a
           personalized BMI note here.
         </p>
-        <p className="text-sm text-ink/70 mt-1 lang-hi">
+        <p className="text-sm text-slate-500 mt-1 lang-hi">
           प्रोफ़ाइल टैब में अपनी ऊंचाई और वज़न भरें, यहां व्यक्तिगत BMI नोट
           दिखेगा।
         </p>
         <Link
           href="/profile"
-          className="inline-block mt-3 bg-gradient-to-r from-clay to-marigold text-white text-sm font-medium rounded-lg px-4 py-2 shadow-sm active:scale-[0.97] transition-transform"
+          className="inline-block mt-3 bg-amber-500 text-white text-sm font-medium rounded-lg px-4 py-2 shadow-sm active:scale-[0.97] transition-transform"
         >
           <span className="lang-en">Go to Profile</span>
           <span className="lang-hi">प्रोफ़ाइल पर जाएं</span>
@@ -43,13 +43,13 @@ export default function ProfileCard() {
   const cat = bmiCategory(bmi);
 
   return (
-    <div className="bg-white rounded-2xl border border-black/10 p-4 mb-6 shadow-sm">
+    <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-6 shadow-sm">
       <div className="flex items-center justify-between">
         <p className="text-lg font-semibold">
           <span className="lang-en">{profile.name ? `${profile.name}'s Profile` : "Your Profile"}</span>
           <span className="lang-hi">{profile.name ? `${profile.name} की प्रोफ़ाइल` : "आपकी प्रोफ़ाइल"}</span>
         </p>
-        <Link href="/profile" className="text-sm text-sage underline">
+        <Link href="/profile" className="text-sm text-amber-700 underline">
           <span className="lang-en">Edit</span>
           <span className="lang-hi">बदलें</span>
         </Link>
@@ -72,18 +72,18 @@ export default function ProfileCard() {
         {bmi !== null && (
           <span>
             BMI: <b>{bmi}</b>{" "}
-            <span className="text-ink/60">
+            <span className="text-slate-500">
               (<span className="lang-en">{cat.en}</span><span className="lang-hi">{cat.hi}</span>)
             </span>
           </span>
         )}
       </div>
-      <p className="text-sm text-ink/60 mt-3 lang-en">
+      <p className="text-sm text-slate-500 mt-3 lang-en">
         Losing even a little weight, gradually, measurably eases the load
         on your knees while walking (Messier et al.). Ask your doctor
         what's realistic and safe for you.
       </p>
-      <p className="text-sm text-ink/50 mt-1 lang-hi">
+      <p className="text-sm text-slate-400 mt-1 lang-hi">
         थोड़ा-सा भी वज़न धीरे-धीरे कम होने से चलते समय घुटनों पर दबाव मापने
         लायक कम होता है (मेसिये एट अल.)। डॉक्टर से पूछें कि आपके लिए क्या
         सुरक्षित और उचित है।

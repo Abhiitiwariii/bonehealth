@@ -33,7 +33,7 @@ export default function FeedbackWidget() {
       <button
         onClick={() => setOpen(true)}
         aria-label="Rate this app"
-        className="fixed bottom-20 right-4 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-fuchsia-500 to-purple-600 text-white shadow-lg flex items-center justify-center text-2xl active:scale-95 transition-transform"
+        className="fixed bottom-20 right-4 z-40 w-14 h-14 rounded-full bg-amber-500 text-white shadow-lg flex items-center justify-center text-2xl active:scale-95 transition-transform"
       >
         ⭐
       </button>
@@ -65,12 +65,12 @@ export default function FeedbackWidget() {
                   <button
                     onClick={() => setOpen(false)}
                     aria-label="Close"
-                    className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-ink/60"
+                    className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500"
                   >
                     ✕
                   </button>
                 </div>
-                <p className="text-sm text-ink/60 mb-4">
+                <p className="text-sm text-slate-500 mb-4">
                   <span className="lang-en">Goes straight to the developer's email.</span>
                   <span className="lang-hi">सीधे डेवलपर के ईमेल पर जाता है।</span>
                 </p>
@@ -81,7 +81,7 @@ export default function FeedbackWidget() {
                       key={n}
                       onClick={() => setRating(n)}
                       aria-label={`${n} star`}
-                      className={`text-4xl leading-none ${n <= rating ? "text-amber-400" : "text-black/15"}`}
+                      className={`text-4xl leading-none ${n <= rating ? "text-amber-400" : "text-slate-300"}`}
                     >
                       ★
                     </button>
@@ -93,13 +93,13 @@ export default function FeedbackWidget() {
                   onChange={(e) => setComment(e.target.value)}
                   rows={3}
                   placeholder="What can we improve? (optional)"
-                  className="w-full border border-black/15 rounded-xl p-3 text-base"
+                  className="w-full border border-slate-200 rounded-xl p-3 text-base"
                 />
 
                 <button
                   onClick={send}
                   disabled={rating === 0}
-                  className="w-full mt-4 bg-gradient-to-r from-fuchsia-500 to-purple-600 disabled:opacity-40 text-white font-bold py-3 rounded-xl text-lg"
+                  className="w-full mt-4 bg-amber-500 disabled:opacity-40 text-white font-bold py-3 rounded-xl text-lg"
                 >
                   <span className="lang-en">Send Feedback</span>
                   <span className="lang-hi">फ़ीडबैक भेजें</span>

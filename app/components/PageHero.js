@@ -1,9 +1,8 @@
-// Colorful gradient intro banner used at the top of every section page, so
-// the app doesn't read as a stack of identical plain white boxes. Each
-// section gets its own color pairing (see the `from`/`to` props passed in)
-// to help orient a person at a glance about which part of the app they're
-// in. `data-hero` lets globals.css flatten this to one solid, accessible
-// color when a person turns on High Contrast mode.
+// Clean section header used at the top of every page. Was a colorful
+// gradient banner; now a calm white card with an amber emoji chip and slate
+// text, matching the modern single-accent system. `data-hero` is kept so
+// globals.css can still flatten it in High Contrast mode. The `from`/`to`
+// props are accepted but no longer used (kept so callers don't need editing).
 
 export default function PageHero({
   emoji,
@@ -11,32 +10,33 @@ export default function PageHero({
   title_hi,
   subtitle_en,
   subtitle_hi,
-  from,
-  to,
+  from, // eslint-disable-line no-unused-vars
+  to, // eslint-disable-line no-unused-vars
   children,
 }) {
   return (
     <div
       data-hero
-      className={`animate-fade-in relative overflow-hidden bg-gradient-to-br ${from} ${to} rounded-3xl p-6 text-white shadow-cardLift mb-6`}
+      className="animate-fade-in bg-white border border-slate-200 rounded-3xl p-6 shadow-sm mb-6"
     >
-      <span className="shine-sweep" aria-hidden="true" />
-      <span className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/10" />
-      <span className="absolute -left-8 -bottom-10 w-28 h-28 rounded-full bg-white/5" />
-      <div className="relative">
-        <p className="text-5xl mb-2 drop-shadow-sm">{emoji}</p>
-        <p className="text-xl font-display font-bold">
-          <span className="lang-en">{title_en}</span>
-          <span className="lang-hi">{title_hi}</span>
-        </p>
-        {(subtitle_en || subtitle_hi) && (
-          <p className="text-sm text-white/85 mt-2 leading-relaxed">
-            <span className="lang-en">{subtitle_en}</span>
-            <span className="lang-hi">{subtitle_hi}</span>
+      <div className="flex items-center gap-4">
+        <span className="shrink-0 w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl">
+          {emoji}
+        </span>
+        <div className="min-w-0">
+          <p className="text-xl font-display font-bold text-slate-800">
+            <span className="lang-en">{title_en}</span>
+            <span className="lang-hi">{title_hi}</span>
           </p>
-        )}
-        {children}
+          {(subtitle_en || subtitle_hi) && (
+            <p className="text-sm text-slate-500 mt-1 leading-relaxed">
+              <span className="lang-en">{subtitle_en}</span>
+              <span className="lang-hi">{subtitle_hi}</span>
+            </p>
+          )}
+        </div>
       </div>
+      {children}
     </div>
   );
 }

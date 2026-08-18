@@ -8,18 +8,18 @@ function TestItem({ t }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-t border-black/5 pt-3 first:border-0 first:pt-0">
+    <div className="border-t border-slate-100 pt-3 first:border-0 first:pt-0">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between gap-2 text-left"
       >
-        <span className="font-semibold text-clay">
+        <span className="font-semibold text-slate-800">
           <span className="lang-en">{t.title_en}</span>
           <span className="lang-hi">{t.title_hi}</span>
         </span>
         <span
-          className={`shrink-0 text-clay transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          className={`shrink-0 text-amber-500 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
           aria-hidden="true"
         >
           ▾
@@ -30,14 +30,14 @@ function TestItem({ t }) {
           <div className="mt-2">
             <p className="text-sm lang-en">{t.who_en}</p>
             <p className="text-sm lang-hi">{t.who_hi}</p>
-            <p className="text-sm mt-2 text-ink/70 lang-en">{t.why_en}</p>
-            <p className="text-sm text-ink/50 lang-hi">{t.why_hi}</p>
+            <p className="text-sm mt-2 text-slate-500 lang-en">{t.why_en}</p>
+            <p className="text-sm text-slate-400 lang-hi">{t.why_hi}</p>
             <ExerciseVideo
               videoId={t.videoId}
               videoSource={t.videoSource}
               videoSearch={t.videoSearch}
             />
-            <p className="text-xs text-ink/40 mt-2">Source: {t.source}</p>
+            <p className="text-xs text-slate-400 mt-2">Source: {t.source}</p>
           </div>
         </div>
       </div>
@@ -49,16 +49,16 @@ export default function TestSuggestions({ profile }) {
   const tests = orderedTestSuggestions(profile);
 
   return (
-    <div className="bg-white rounded-2xl border border-black/10 p-4 mb-4 shadow-sm">
+    <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-4 shadow-sm">
       <p className="text-lg font-semibold mb-1">
         🩺 <span className="lang-en">Tests Worth Asking About</span>
         <span className="lang-hi">पूछने लायक जांच</span>
       </p>
-      <p className="text-sm text-ink/70 mb-4 lang-en">
+      <p className="text-sm text-slate-500 mb-4 lang-en">
         General education, not an order for any test. Ask your doctor which
         fits your situation.
       </p>
-      <p className="text-sm text-ink/70 mb-4 lang-hi">
+      <p className="text-sm text-slate-500 mb-4 lang-hi">
         सामान्य जानकारी, जांच का आदेश नहीं। डॉक्टर से पूछें कि आपके लिए कौन
         सी सही है।
       </p>

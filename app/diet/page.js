@@ -14,10 +14,10 @@ export const metadata = {
 };
 
 const groupAccents = [
-  "border-l-clay",
-  "border-l-marigold",
-  "border-l-amber-600",
-  "border-l-sage",
+  "border-l-amber-400",
+  "border-l-amber-400",
+  "border-l-amber-400",
+  "border-l-amber-400",
 ];
 
 export default function DietPage() {
@@ -49,19 +49,19 @@ export default function DietPage() {
         {nutrientGroups.map((group, i) => (
           <div
             key={group.title_en}
-            className={`relative overflow-hidden bg-white rounded-xl border border-black/10 border-l-4 ${groupAccents[i % 4]} p-4 shadow-sm`}
+            className={`relative overflow-hidden bg-white rounded-xl border border-slate-200 border-l-4 ${groupAccents[i % 4]} p-4 shadow-sm`}
           >
-            <p className="text-lg font-semibold text-clay">
+            <p className="text-lg font-semibold text-slate-800">
               {["🦴", "☀️", "🥜", "🥬"][i % 4]}{" "}
               <span className="lang-en">{group.title_en}</span>
               <span className="lang-hi">{group.title_hi}</span>
             </p>
-            <p className="text-sm text-ink/60 italic mt-1 lang-en">{group.why_en}</p>
-            <p className="text-sm text-ink/60 italic mt-1 lang-hi">{group.why_hi}</p>
+            <p className="text-sm text-slate-500 italic mt-1 lang-en">{group.why_en}</p>
+            <p className="text-sm text-slate-500 italic mt-1 lang-hi">{group.why_hi}</p>
             <ul className="mt-3 space-y-1 text-sm">
               {group.foods.map((f, i) => (
                 <li key={i}>
-                  <span className="text-sage">●</span>{" "}
+                  <span className="text-amber-500">●</span>{" "}
                   <span className="lang-en">{f.en}</span>
                   <span className="lang-hi">{f.hi}</span>
                 </li>
@@ -71,17 +71,17 @@ export default function DietPage() {
         ))}
       </div>
 
-      <div className="mt-4 bg-white rounded-xl border border-black/10 p-4 shadow-sm">
-        <p className="text-lg font-semibold text-clay">
+      <div className="mt-4 bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+        <p className="text-lg font-semibold text-slate-800">
           🙏 <span className="lang-en">{vratFriendlyFoods.title_en}</span>
           <span className="lang-hi">{vratFriendlyFoods.title_hi}</span>
         </p>
-        <p className="text-sm text-ink/60 italic mt-1 lang-en">{vratFriendlyFoods.note_en}</p>
-        <p className="text-sm text-ink/60 italic mt-1 lang-hi">{vratFriendlyFoods.note_hi}</p>
+        <p className="text-sm text-slate-500 italic mt-1 lang-en">{vratFriendlyFoods.note_en}</p>
+        <p className="text-sm text-slate-500 italic mt-1 lang-hi">{vratFriendlyFoods.note_hi}</p>
         <ul className="mt-3 space-y-1 text-sm">
           {vratFriendlyFoods.foods.map((f, i) => (
             <li key={i}>
-              <span className="text-sage">●</span>{" "}
+              <span className="text-amber-500">●</span>{" "}
               <span className="lang-en">{f.en}</span>
               <span className="lang-hi">{f.hi}</span>
             </li>
@@ -93,13 +93,13 @@ export default function DietPage() {
         <Collapsible icon="🍲" title_en="A Sample Day" title_hi="एक दिन का उदाहरण" defaultOpen>
           <div className="space-y-3">
             {sampleDay.map((m) => (
-              <div key={m.meal_en} className="border-l-4 border-sage/40 pl-3">
+              <div key={m.meal_en} className="border-l-4 border-amber-200 pl-3">
                 <p className="font-semibold">
                   <span className="lang-en">{m.meal_en}</span>
                   <span className="lang-hi">{m.meal_hi}</span>
                 </p>
                 <p className="text-sm lang-en">{m.idea_en}</p>
-                <p className="text-sm text-ink/50 lang-hi">{m.idea_hi}</p>
+                <p className="text-sm text-slate-400 lang-hi">{m.idea_hi}</p>
               </div>
             ))}
           </div>
@@ -113,28 +113,28 @@ export default function DietPage() {
           title_hi="सप्लीमेंट"
           badge={supplements.length}
         >
-          <p className="text-sm text-ink/60 mb-3 lang-en">
+          <p className="text-sm text-slate-500 mb-3 lang-en">
             Ask your doctor before starting any of these. Links open to NIH
             fact sheets, not a store.
           </p>
-          <p className="text-sm text-ink/60 mb-3 lang-hi">
+          <p className="text-sm text-slate-500 mb-3 lang-hi">
             इनमें से कोई भी शुरू करने से पहले डॉक्टर से पूछें। लिंक NIH की
             जानकारी पर खुलते हैं, किसी दुकान पर नहीं।
           </p>
           <ul className="space-y-3 text-sm">
             {supplements.map((s) => (
-              <li key={s.name_en} className="border-t border-black/5 pt-3 first:border-0 first:pt-0">
+              <li key={s.name_en} className="border-t border-slate-100 pt-3 first:border-0 first:pt-0">
                 <a
                   href={s.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-sage underline decoration-sage/40 underline-offset-2"
+                  className="font-semibold text-amber-700 underline decoration-amber-300 underline-offset-2"
                 >
                   <span className="lang-en">{s.name_en}</span>
                   <span className="lang-hi">{s.name_hi}</span>
                 </a>
                 <p className="mt-1 lang-en">{s.info_en}</p>
-                <p className="text-ink/50 lang-hi">{s.info_hi}</p>
+                <p className="text-slate-400 lang-hi">{s.info_hi}</p>
               </li>
             ))}
           </ul>

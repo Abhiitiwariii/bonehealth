@@ -32,7 +32,7 @@ export default function Disclaimer() {
     return (
       <button
         onClick={reopen}
-        className="w-full text-left bg-white border border-black/10 rounded-xl px-4 py-2 mb-6 text-sm text-ink/60 flex items-center gap-2"
+        className="w-full text-left bg-white border border-slate-200 rounded-xl px-4 py-2 mb-6 text-sm text-slate-500 flex items-center gap-2"
       >
         <span>⚠️</span>
         <span className="lang-en">Please read first</span>
@@ -42,16 +42,16 @@ export default function Disclaimer() {
   }
 
   return (
-    <div className="bg-sage/10 border border-sage/30 rounded-xl p-4 mb-6 text-sm leading-relaxed">
+    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm leading-relaxed">
       <div className="flex items-start justify-between gap-3">
-        <p className="font-semibold text-sage mb-1">
+        <p className="font-semibold text-amber-800 mb-1">
           <span className="lang-en">Please read first</span>
           <span className="lang-hi">पहले यह पढ़ें</span>
         </p>
         <button
           onClick={dismiss}
           aria-label="Dismiss"
-          className="shrink-0 w-7 h-7 rounded-full bg-white border border-black/10 text-ink/60 flex items-center justify-center"
+          className="shrink-0 w-7 h-7 rounded-full bg-white border border-slate-200 text-slate-500 flex items-center justify-center"
         >
           ✕
         </button>

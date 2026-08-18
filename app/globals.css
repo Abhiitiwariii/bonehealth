@@ -7,12 +7,12 @@ html {
 }
 
 body {
-  /* Warm, soft backdrop instead of flat gray — still light and easy to
-     read, just less clinical. High-contrast mode below flattens this back
-     to plain white for anyone who needs maximum readability. */
-  background: radial-gradient(circle at 50% 0%, #FDF6EC 0%, #FAF7F1 45%, #FAFAFA 100%);
+  /* Calm, cool neutral backdrop — the modern/clinical base. Cards sit on
+     top in white so the one warm accent colour reads as emphasis.
+     High-contrast mode below flattens this to plain white. */
+  background: #F5F7FA;
   background-attachment: fixed;
-  color: #2E2A26;
+  color: #1E293B;
   min-height: 100vh;
   /* Leaves room above the fixed bottom nav bar so content never hides
      behind it. */
@@ -45,12 +45,12 @@ html.text-scale-extra-large {
   font-size: 130%;
 }
 
-/* Accessibility: high contrast, removes faded/low-opacity secondary text
-   so everything reads at full strength. */
-html.high-contrast .text-ink\/70,
-html.high-contrast .text-ink\/60,
-html.high-contrast .text-ink\/50,
-html.high-contrast .text-ink\/40 {
+/* Accessibility: high contrast, removes faded/low-strength secondary text
+   so everything reads at full strength. The clean design system uses
+   slate-400/500 for secondary copy (was text-ink/40–70), so darken those. */
+html.high-contrast .text-slate-500,
+html.high-contrast .text-slate-400,
+html.high-contrast .text-slate-300 {
   color: #1A1714;
 }
 html.high-contrast body {
