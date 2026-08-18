@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import LanguageToggle from "./components/LanguageToggle";
 import ReminderChecker from "./components/ReminderChecker";
 import FeedbackWidget from "./components/FeedbackWidget";
+import CloudSync from "./components/CloudSync";
 
 const display = Baloo_2({
   subsets: ["latin"],
@@ -29,24 +30,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${devanagari.variable}`}>
-      <body className="min-h-screen flex flex-col bg-surface font-sans">
-        <header className="relative overflow-hidden bg-gradient-to-br from-clay via-clay to-marigold px-4 py-6 shadow-md">
-          <span className="absolute -right-8 -top-10 w-40 h-40 rounded-full bg-white/10" />
-          <span className="absolute -left-10 -bottom-14 w-32 h-32 rounded-full bg-white/10" />
-          <div className="relative max-w-2xl mx-auto pr-14 flex items-center gap-3">
-            <span className="shrink-0 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-3xl shadow-inner">
+      <body className="min-h-screen flex flex-col bg-[#F5F7FA] font-sans">
+        <header className="bg-white border-b border-slate-200 px-4 py-5">
+          <div className="max-w-2xl mx-auto pr-14 flex items-center gap-3">
+            <span className="shrink-0 w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl">
               🦴
             </span>
             <div>
-              <h1 className="text-2xl font-display font-bold leading-tight text-white drop-shadow-sm">
+              <h1 className="text-xl font-display font-bold leading-tight text-slate-800">
                 <span className="lang-hi">आरोग्य साथी</span>
-                <span className="lang-en">Bone Health Arogya Saathi</span>
+                <span className="lang-en">Arogya Saathi</span>
               </h1>
-              <p className="text-sm text-white/85 mt-1 lang-en">
-                Daily routine, diet &amp; progress
+              <p className="text-sm text-slate-500 mt-0.5 lang-en">
+                Bone health, every day
               </p>
-              <p className="text-sm text-white/85 mt-1 lang-hi">
-                रोज़ की दिनचर्या, आहार और प्रगति
+              <p className="text-sm text-slate-500 mt-0.5 lang-hi">
+                रोज़ हड्डी की देखभाल
               </p>
             </div>
           </div>
@@ -58,7 +57,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
 
-        <footer className="text-center text-sm text-ink/60 py-6 px-4">
+        <footer className="text-center text-sm text-slate-500 py-6 px-4">
           <p>
             <span className="lang-en">Always follow your doctor's advice.</span>
             <span className="lang-hi">सदैव अपने डॉक्टर की सलाह का पालन करें।</span>
@@ -74,6 +73,7 @@ export default function RootLayout({ children }) {
 
         <ReminderChecker />
         <FeedbackWidget />
+        <CloudSync />
         <Nav />
       </body>
     </html>

@@ -66,7 +66,7 @@ export default function AccessibilityControls() {
             className={`flex-1 rounded-lg py-2 text-sm font-semibold border ${
               size === s
                 ? "bg-primary text-white border-primary"
-                : "bg-white text-ink border-black/15"
+                : "bg-white text-slate-800 border-slate-200"
             }`}
           >
             {sizeLabels[s]}
@@ -78,7 +78,7 @@ export default function AccessibilityControls() {
         className={`w-full rounded-lg py-2 text-sm font-semibold border ${
           highContrast
             ? "bg-primary text-white border-primary"
-            : "bg-white text-ink border-black/15"
+            : "bg-white text-slate-800 border-slate-200"
         }`}
       >
         <span className="lang-en">{highContrast ? "High Contrast: On" : "High Contrast: Off"}</span>

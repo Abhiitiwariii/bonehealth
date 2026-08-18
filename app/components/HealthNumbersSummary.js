@@ -13,9 +13,9 @@ import {
 import { loadProfile } from "../../lib/profileStore";
 
 const levelStyles = {
-  low: "bg-clay/10 text-clay border-clay/30",
-  high: "bg-clay/10 text-clay border-clay/30",
-  normal: "bg-sage/10 text-sage border-sage/30",
+  low: "bg-rose-50 text-rose-700 border-rose-200",
+  high: "bg-rose-50 text-rose-700 border-rose-200",
+  normal: "bg-amber-50 text-amber-700 border-amber-200",
 };
 
 function Row({ label_en, label_hi, result }) {
@@ -23,7 +23,7 @@ function Row({ label_en, label_hi, result }) {
   return (
     <div className={`rounded-lg border p-3 ${levelStyles[result.level]}`}>
       <div className="flex items-center justify-between">
-        <p className="font-semibold text-ink">
+        <p className="font-semibold text-slate-800">
           <span className="lang-en">{label_en}</span>
           <span className="lang-hi">{label_hi}</span>
         </p>
@@ -51,21 +51,21 @@ export default function HealthNumbersSummary() {
 
   if (!hasAnyHealthNumbers(numbers)) {
     return (
-      <div className="bg-white rounded-2xl border border-black/10 p-4 mb-6 shadow-sm">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-6 shadow-sm">
         <p className="text-lg font-semibold">
           🔢 <span className="lang-en">Your Health Numbers</span>
           <span className="lang-hi">आपके स्वास्थ्य आंकड़े</span>
         </p>
-        <p className="text-sm text-ink/70 mt-1 lang-en">
+        <p className="text-sm text-slate-500 mt-1 lang-en">
           Add numbers from your latest report on the Profile tab to see
           them here.
         </p>
-        <p className="text-sm text-ink/70 mt-1 lang-hi">
+        <p className="text-sm text-slate-500 mt-1 lang-hi">
           इन्हें यहां देखने के लिए प्रोफ़ाइल टैब पर अपनी रिपोर्ट के आंकड़े जोड़ें।
         </p>
         <Link
           href="/profile"
-          className="inline-block mt-3 bg-gradient-to-r from-clay to-marigold text-white text-sm font-medium rounded-lg px-4 py-2 shadow-sm active:scale-[0.97] transition-transform"
+          className="inline-block mt-3 bg-amber-500 text-white text-sm font-medium rounded-lg px-4 py-2 shadow-sm active:scale-[0.97] transition-transform"
         >
           <span className="lang-en">Go to Profile</span>
           <span className="lang-hi">प्रोफ़ाइल पर जाएं</span>
@@ -80,7 +80,7 @@ export default function HealthNumbersSummary() {
   const hb = interpretHemoglobin(numbers.hemoglobin, profile?.gender);
 
   return (
-    <div className="bg-white rounded-2xl border border-black/10 p-4 mb-6 shadow-sm">
+    <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-6 shadow-sm">
       <p className="text-lg font-semibold">
         🔢 <span className="lang-en">Your Health Numbers</span>
         <span className="lang-hi">आपके स्वास्थ्य आंकड़े</span>
@@ -91,13 +91,13 @@ export default function HealthNumbersSummary() {
         <Row label_en="Bone density (T-score)" label_hi="हड्डी घनत्व" result={bmd} />
         <Row label_en="Hemoglobin" label_hi="हीमोग्लोबिन" result={hb} />
       </div>
-      <p className="text-xs text-ink/40 mt-3 lang-en">
+      <p className="text-xs text-slate-400 mt-3 lang-en">
         General ranges, not a diagnosis. Your lab's printed range is the
-        most accurate guide. <Link href="/profile" className="text-sage underline">Edit</Link>
+        most accurate guide. <Link href="/profile" className="text-amber-700 underline">Edit</Link>
       </p>
-      <p className="text-xs text-ink/40 mt-3 lang-hi">
+      <p className="text-xs text-slate-400 mt-3 lang-hi">
         सामान्य दायरे, निदान नहीं। आपकी रिपोर्ट पर छपी सीमा सबसे सटीक है।{" "}
-        <Link href="/profile" className="text-sage underline">बदलें</Link>
+        <Link href="/profile" className="text-amber-700 underline">बदलें</Link>
       </p>
     </div>
   );

@@ -20,7 +20,7 @@ export default function ExerciseVideo({ videoId, videoSource, videoSearch }) {
         )}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-2 inline-flex items-center gap-1 text-sm text-sage underline decoration-sage/40 underline-offset-2"
+        className="mt-2 inline-flex items-center gap-1 text-sm text-amber-700 underline decoration-amber-300 underline-offset-2"
       >
         ▶ <span className="lang-en">Search a demo video</span>
         <span className="lang-hi">डेमो वीडियो खोजें</span>
@@ -64,7 +64,7 @@ export default function ExerciseVideo({ videoId, videoSource, videoSearch }) {
         />
       </div>
       {videoSource && (
-        <p className="text-xs text-ink/40 mt-1">Video: {videoSource}</p>
+        <p className="text-xs text-slate-400 mt-1">Video: {videoSource}</p>
       )}
     </div>
   );

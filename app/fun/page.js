@@ -21,7 +21,7 @@ export default function FunPage() {
         to="to-blue-600"
       />
 
-      <div className="bg-white rounded-2xl border border-black/10 p-4 shadow-sm">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
         <p className="text-base font-semibold text-sky-600">
           😄 <span className="lang-en">{video.title_en}</span>
           <span className="lang-hi">{video.title_hi}</span>

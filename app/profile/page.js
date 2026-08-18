@@ -111,13 +111,11 @@ export default function ProfilePage() {
         {moreLinks.map((item) => (
           <Link
             key={item.href}
-            data-hero
             href={item.href}
-            className={`relative overflow-hidden flex items-center gap-3 bg-gradient-to-br ${item.from} ${item.to} text-white rounded-2xl p-4 shadow-md active:scale-[0.97] transition-transform`}
+            className="flex items-center gap-3 bg-white border border-slate-200 rounded-2xl p-4 shadow-sm active:scale-[0.97] transition-transform"
           >
-            <span className="absolute -right-4 -top-4 w-14 h-14 rounded-full bg-white/10" />
-            <span className="text-3xl drop-shadow-sm">{item.emoji}</span>
-            <span className="text-lg font-semibold">
+            <span className="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl shrink-0">{item.emoji}</span>
+            <span className="text-lg font-semibold text-slate-800">
               <span className="lang-en block">{item.label_en}</span>
               <span className="lang-hi block">{item.label_hi}</span>
             </span>
@@ -125,7 +123,7 @@ export default function ProfilePage() {
         ))}
       </div>
 
-      <div className="bg-white rounded-2xl border border-black/10 p-4 mb-4 space-y-4 shadow-sm">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-4 space-y-4 shadow-sm">
         <label className="block">
           <span className="font-semibold lang-en">Name (optional)</span>
           <span className="font-semibold lang-hi">नाम (वैकल्पिक)</span>
@@ -133,7 +131,7 @@ export default function ProfilePage() {
             type="text"
             value={profile.name}
             onChange={(e) => update("name", e.target.value)}
-            className="w-full mt-1 border border-black/15 rounded-lg p-2 text-base"
+            className="w-full mt-1 border border-slate-200 rounded-lg p-2 text-base"
             placeholder="Your name"
           />
         </label>
@@ -146,7 +144,7 @@ export default function ProfilePage() {
               type="number"
               value={profile.heightCm}
               onChange={(e) => update("heightCm", e.target.value)}
-              className="w-full mt-1 border border-black/15 rounded-lg p-2 text-base"
+              className="w-full mt-1 border border-slate-200 rounded-lg p-2 text-base"
               placeholder="e.g. 160"
             />
           </label>
@@ -157,7 +155,7 @@ export default function ProfilePage() {
               type="number"
               value={profile.weightKg}
               onChange={(e) => update("weightKg", e.target.value)}
-              className="w-full mt-1 border border-black/15 rounded-lg p-2 text-base"
+              className="w-full mt-1 border border-slate-200 rounded-lg p-2 text-base"
               placeholder="e.g. 65"
             />
           </label>
@@ -171,7 +169,7 @@ export default function ProfilePage() {
               type="number"
               value={profile.age}
               onChange={(e) => update("age", e.target.value)}
-              className="w-full mt-1 border border-black/15 rounded-lg p-2 text-base"
+              className="w-full mt-1 border border-slate-200 rounded-lg p-2 text-base"
               placeholder="e.g. 56"
             />
           </label>
@@ -181,7 +179,7 @@ export default function ProfilePage() {
             <select
               value={profile.gender}
               onChange={(e) => update("gender", e.target.value)}
-              className="w-full mt-1 border border-black/15 rounded-lg p-2 text-base bg-white"
+              className="w-full mt-1 border border-slate-200 rounded-lg p-2 text-base bg-white"
             >
               <option value="">Prefer not to say</option>
               <option value="female">Female</option>
@@ -192,11 +190,11 @@ export default function ProfilePage() {
         </div>
 
         {bmi !== null && (
-          <div className="bg-sage/10 border border-sage/30 rounded-lg p-3 text-sm">
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm">
             <span className="lang-en">Your BMI:</span>
             <span className="lang-hi">आपका BMI:</span>{" "}
-            <span className="font-bold text-clay">{bmi}</span>{" "}
-            <span className="text-ink/60">
+            <span className="font-bold text-amber-700">{bmi}</span>{" "}
+            <span className="text-slate-500">
               (<span className="lang-en">{cat.en}</span><span className="lang-hi">{cat.hi}</span>)
             </span>
           </div>
@@ -209,20 +207,20 @@ export default function ProfilePage() {
             value={profile.notes}
             onChange={(e) => update("notes", e.target.value)}
             rows={4}
-            className="w-full mt-1 border border-black/15 rounded-lg p-2 text-base"
+            className="w-full mt-1 border border-slate-200 rounded-lg p-2 text-base"
             placeholder="e.g. Doctor said mild osteoarthritis in left knee"
           />
-          <p className="text-xs text-ink/50 mt-1 lang-en">
+          <p className="text-xs text-slate-400 mt-1 lang-en">
             Your own words only. The app never reads X-rays or files.
           </p>
-          <p className="text-xs text-ink/50 mt-1 lang-hi">
+          <p className="text-xs text-slate-400 mt-1 lang-hi">
             केवल अपने शब्दों में। ऐप कभी भी एक्स-रे या फ़ाइलें नहीं पढ़ता।
           </p>
         </label>
 
         <button
           onClick={handleSave}
-          className="w-full bg-gradient-to-r from-clay to-marigold text-white font-semibold py-3 rounded-xl text-lg shadow-md active:scale-[0.98] transition-transform"
+          className="w-full bg-amber-500 text-white font-semibold py-3 rounded-xl text-lg shadow-md active:scale-[0.98] transition-transform"
         >
           <span className="lang-en">{saved ? "Saved ✓" : "Save Profile"}</span>
           <span className="lang-hi">{saved ? "सेव हो गया ✓" : "प्रोफ़ाइल सेव करें"}</span>
@@ -231,16 +229,16 @@ export default function ProfilePage() {
 
       <HealthNumbersForm />
 
-      <div className="bg-white rounded-2xl border border-black/10 p-4 mb-6 shadow-sm">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-6 shadow-sm">
         <p className="text-lg font-semibold mb-1">
           📎 <span className="lang-en">Attach Report Files</span>
           <span className="lang-hi">रिपोर्ट फ़ाइलें जोड़ें</span>
         </p>
-        <p className="text-sm text-ink/60 mb-3 lang-en">
+        <p className="text-sm text-slate-500 mb-3 lang-en">
           Photos or PDFs of your X-ray or report. Stored only on this
           device; the app never opens or reads them.
         </p>
-        <p className="text-sm text-ink/60 mb-3 lang-hi">
+        <p className="text-sm text-slate-500 mb-3 lang-hi">
           आपके एक्स-रे या रिपोर्ट की फोटो या PDF। केवल इसी डिवाइस पर सेव, ऐप
           इन्हें कभी नहीं खोलता या पढ़ता।
         </p>
@@ -253,7 +251,7 @@ export default function ProfilePage() {
           className="text-sm"
         />
         {uploading && (
-          <p className="text-sm text-ink/50 mt-2">
+          <p className="text-sm text-slate-400 mt-2">
             <span className="lang-en">Uploading...</span>
             <span className="lang-hi">अपलोड हो रहा है...</span>
           </p>
@@ -264,19 +262,19 @@ export default function ProfilePage() {
             {files.map((f) => (
               <li
                 key={f.id}
-                className="flex items-center justify-between border-t border-black/5 pt-2 first:border-0 first:pt-0"
+                className="flex items-center justify-between border-t border-slate-100 pt-2 first:border-0 first:pt-0"
               >
                 <a
                   href={f.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-sage underline decoration-sage/40 underline-offset-2 truncate max-w-[70%]"
+                  className="text-sm text-amber-700 underline decoration-amber-300 underline-offset-2 truncate max-w-[70%]"
                 >
                   {f.name}
                 </a>
                 <button
                   onClick={() => handleDelete(f.id)}
-                  className="text-xs text-clay border border-clay/30 rounded-full px-2 py-1"
+                  className="text-xs text-slate-600 border border-slate-300 rounded-full px-2 py-1"
                 >
                   <span className="lang-en">Delete</span>
                   <span className="lang-hi">हटाएं</span>
@@ -291,7 +289,7 @@ export default function ProfilePage() {
         <TestSuggestions profile={profile} />
       </div>
 
-      <div className="bg-white rounded-2xl border border-black/10 p-4 shadow-sm">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
         <p className="text-lg font-semibold mb-3">
           ⚙️ <span className="lang-en">Settings</span>
           <span className="lang-hi">सेटिंग्स</span>

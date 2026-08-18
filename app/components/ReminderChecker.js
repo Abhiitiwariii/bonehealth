@@ -45,7 +45,7 @@ export default function ReminderChecker() {
       {due.map((r) => (
         <div
           key={r.id}
-          className="bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-2xl shadow-lg p-4 flex items-center gap-3"
+          className="bg-amber-500 text-white rounded-2xl shadow-lg p-4 flex items-center gap-3"
         >
           <span className="text-3xl shrink-0">{r.emoji}</span>
           <div className="flex-1">

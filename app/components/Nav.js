@@ -26,7 +26,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-black/10 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur border-t border-slate-200 shadow-[0_-2px_16px_rgba(0,0,0,0.06)]">
       <div className="max-w-2xl mx-auto grid grid-cols-4">
         {links.map((link) => {
           const active = isActive(pathname, link.href);
@@ -34,15 +34,16 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex flex-col items-center justify-center gap-0.5 py-2.5 text-sm font-semibold transition-colors ${
-                active ? "text-orange-600" : "text-ink/40"
+              className={`relative flex flex-col items-center justify-center gap-0.5 py-2.5 text-sm font-semibold transition-colors ${
+                active ? "text-amber-600" : "text-slate-400"
               }`}
             >
+              {active && (
+                <span className="absolute top-0 w-8 h-1 rounded-full bg-amber-500" />
+              )}
               <span
-                className={`text-2xl leading-none w-9 h-9 flex items-center justify-center rounded-full transition-all ${
-                  active
-                    ? "bg-gradient-to-br from-orange-100 to-amber-200 shadow-sm scale-105"
-                    : ""
+                className={`text-2xl leading-none w-9 h-9 flex items-center justify-center rounded-full transition-all duration-300 ${
+                  active ? "bg-amber-100 scale-110" : ""
                 }`}
               >
                 {link.icon}

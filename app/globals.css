@@ -7,12 +7,12 @@ html {
 }
 
 body {
-  /* Warm, soft backdrop instead of flat gray — still light and easy to
-     read, just less clinical. High-contrast mode below flattens this back
-     to plain white for anyone who needs maximum readability. */
-  background: radial-gradient(circle at 50% 0%, #FDF6EC 0%, #FAF7F1 45%, #FAFAFA 100%);
+  /* Calm, cool neutral backdrop — the modern/clinical base. Cards sit on
+     top in white so the one warm accent colour reads as emphasis.
+     High-contrast mode below flattens this to plain white. */
+  background: #F5F7FA;
   background-attachment: fixed;
-  color: #2E2A26;
+  color: #1E293B;
   min-height: 100vh;
   /* Leaves room above the fixed bottom nav bar so content never hides
      behind it. */
@@ -45,12 +45,12 @@ html.text-scale-extra-large {
   font-size: 130%;
 }
 
-/* Accessibility: high contrast, removes faded/low-opacity secondary text
-   so everything reads at full strength. */
-html.high-contrast .text-ink\/70,
-html.high-contrast .text-ink\/60,
-html.high-contrast .text-ink\/50,
-html.high-contrast .text-ink\/40 {
+/* Accessibility: high contrast, removes faded/low-strength secondary text
+   so everything reads at full strength. The clean design system uses
+   slate-400/500 for secondary copy (was text-ink/40–70), so darken those. */
+html.high-contrast .text-slate-500,
+html.high-contrast .text-slate-400,
+html.high-contrast .text-slate-300 {
   color: #1A1714;
 }
 html.high-contrast body {
@@ -67,6 +67,12 @@ html.high-contrast [data-hero] {
   background-color: #1A1714 !important;
   color: #FFFFFF !important;
 }
+/* The glossy shine sweep is a decorative flourish, not information —
+   drop it in High Contrast mode so nothing competes with the flattened,
+   maximum-contrast surface underneath it. */
+html.high-contrast .shine-sweep {
+  display: none;
+}
 
 /* Language toggle: show only the selected language. Defaults to showing
    both (no data-lang yet) so there's no flash of missing content before
@@ -76,4 +82,88 @@ html[data-lang="hi"] .lang-en {
 }
 html[data-lang="en"] .lang-hi {
   display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* CRED-style premium gamification layer                              */
+/* ------------------------------------------------------------------ */
+
+/* Smooth-collapse accordion, no JS height measurement needed: the grid
+   track animates between 0fr (collapsed) and 1fr (open), and the inner
+   wrapper clips overflow. Used by <Collapsible> everywhere a <details>
+   used to be, so every expand/collapse in the app feels the same. */
+.accordion-track {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-track.is-open {
+  grid-template-rows: 1fr;
+}
+.accordion-track > .accordion-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Glossy diagonal sweep used on premium hero/reward cards, echoing
+   CRED's metallic-card shine. Respects reduced-motion below. */
+.shine-sweep {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.shine-sweep::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 35%;
+  height: 200%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 3.2s ease-in-out infinite;
+}
+
+/* Shimmering text/background used for the top tier (Diamond) so the
+   highest achievement visibly reads as "premium" at a glance. */
+.text-shimmer {
+  background: linear-gradient(90deg, #f0abfc, #e879f9, #c026d3, #e879f9, #f0abfc);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Confetti burst: small emoji/rect particles positioned via inline
+   style (left offset + delay + rotation), animated with confetti-fall. */
+.confetti-piece {
+  position: absolute;
+  top: 0;
+  will-change: transform, opacity;
+  animation: confettiFall 1.6s ease-in forwards;
+}
+
+/* Horizontal scroll strips (badge shelf, streak calendar) without a
+   visible scrollbar cluttering an already busy card. */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shine-sweep::after,
+  .text-shimmer,
+  .animate-ring-pulse,
+  .animate-shine {
+    animation: none !important;
+  }
 }
